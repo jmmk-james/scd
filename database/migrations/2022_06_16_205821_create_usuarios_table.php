@@ -18,6 +18,7 @@ class CreateUsuariosTable extends Migration
             $table->text('correo');
             $table->text('pass');
             $table->integer('tipo');
+            $table->integer('estado');
             $table->integer('id_persona');
             $table->timestamps();
         });

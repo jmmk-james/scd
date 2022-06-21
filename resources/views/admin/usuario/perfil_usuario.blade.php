@@ -13,7 +13,7 @@
                         </a>
                         <div class="media-body">
                             <h2 class="text-light display-6">{{$datos->nombre}} {{$datos->paterno}} {{$datos->materno}}</h2>
-                            <p>Administrador</p>
+                            
                         </div>
                     </div>
                     @if(session('mensaje'))
@@ -99,7 +99,7 @@
                                 @method('PUT')
                                 @csrf
                                 <input type="hidden" name="id" value="{{$datos->persona_id}}">
-                                <input type="hidden" name="id_usuario" value="0">
+                                <input type="hidden" name="id_usuario" value={{$datos->usuario_id}}>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="nombre" class=" form-control-label">Nombre</label>
@@ -142,6 +142,20 @@
                                 </div>
 
                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tipo" class=" form-control-label">Tipo</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="tipo" class="form-control" required>
+                                            <option value="{{$datos->tipo}}">Seleccionar Tipo</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Responsable - Coordinador</option>
+                                            <option value="3">Registro</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
                                     <div class="col col-md-6">
                                         <button type="submit" class="btn btn-success btn-block">
                                             <i class="fa fa-check"></i> Actualizar
@@ -157,30 +171,14 @@
                             <form action="{{route('updatepass')}}" method="post" class="form-horizontal">
                                 @method('PUT')
                                 @csrf
-                                <input type="hidden" name="id" value="{{$usuario->usuario_id}}">
-                                <input type="hidden" name="id_usuario" value="0">
+                                <input type="hidden" name="id" value="{{$datos->usuario_id}}">
+                                <input type="hidden" name="id_usuario" value={{$datos->usuario_id}}>
                                 <div class="row form-group">
                                     <div class="col col-md-4">
-                                        <label for="pass" class=" form-control-label">Password Actual</label>
+                                        <label for="pass" class=" form-control-label">Password</label>
                                     </div>
                                     <div class="col-12 col-md-8">
-                                        <input type="password" name="pass" placeholder="Password Actual" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-4">
-                                        <label for="passn" class=" form-control-label">Nuevo Password</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="password" name="passn" placeholder="Nuevo Password" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-4">
-                                        <label for="passr" class=" form-control-label">Confirmar Password</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="password" name="passr" placeholder="Confirmar Nuevo Password" class="form-control">
+                                        <input type="password" name="pass" placeholder="Password" class="form-control">
                                     </div>
                                 </div>
                                 

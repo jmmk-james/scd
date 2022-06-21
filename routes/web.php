@@ -27,5 +27,10 @@ Route::get('exit','ControllerSecion@exit')->name('exit');
 
 #----------------------- Modulo Usuario
 Route::get('perfil', 'ControllerUsuario@perfil')->name('perfil');
+Route::get('perfilUsuario/{id_usuario}','ControllerUsuario@perfilUsuario')->name('perfilUsuario');
 Route::put('updateperfil','ControllerUsuario@updateperfil')->name('updateperfil');
 Route::put('updatepass','ControllerUsuario@updatepass')->name('updatepass');
+Route::get('FormularioAgregarUsuario','ControllerUsuario@FormularioAgregarUsuario')->name('FormularioAgregarUsuario');
+Route::post('AgregarUsuario','ControllerUsuario@AgregarUsuario')->name('AgregarUsuario');
+Route::get('listaUsuario','ControllerUsuario@listaUsuario')->name('listaUsuario');
+Route::get('eliminarUsuario/{id_usuario}',"Controllerusuario@eliminarUsuario")->name('eliminarUsuario');
