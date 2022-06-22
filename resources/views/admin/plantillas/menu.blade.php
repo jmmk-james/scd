@@ -1,4 +1,5 @@
 <!-- MENU SIDEBAR-->
+<?php $uri=array('id_search'=>0,'search'=>0);?>
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
@@ -15,11 +16,9 @@
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li><a href="{{route('FormularioAgregarUsuario')}}">Agregar Usuario</a></li>
                         <li><a href="{{route('listaUsuario')}}">Listar Usuarios</a></li>
-                        <li><a href="index3.html">Dashboard 3</a></li>
-                        <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                 </li>
-                <li><a href="table.html"><i class="fas fa-table"></i>Tables</a></li>
+                <li><a href="{{route('listaCarrera',$uri)}}"><i class="fas fa-table"></i>Carreras</a></li>
                 <li><a href="form.html"><i class="far fa-check-square"></i>Forms</a></li>
                 <li><a href="calendar.html"><i class="fas fa-calendar-alt"></i>Calendar</a></li>
                 <li><a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a></li>

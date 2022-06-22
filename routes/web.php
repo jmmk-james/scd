@@ -34,3 +34,12 @@ Route::get('FormularioAgregarUsuario','ControllerUsuario@FormularioAgregarUsuari
 Route::post('AgregarUsuario','ControllerUsuario@AgregarUsuario')->name('AgregarUsuario');
 Route::get('listaUsuario','ControllerUsuario@listaUsuario')->name('listaUsuario');
 Route::get('eliminarUsuario/{id_usuario}',"Controllerusuario@eliminarUsuario")->name('eliminarUsuario');
+
+#---------------------- Modulo Carreras 
+Route::get('listaCarrera/{id_search}/{search}', 'ControllerCarrera@listaCarrera')->name('listaCarrera');
+Route::get('formularioCarrera','ControllerCarrera@formularioCarrera')->name('formularioCarrera');
+Route::post('agregarCarrera', 'ControllerCarrera@agregarCarrera')->name('agregarCarrera');
+Route::get('eliminarCarrea/{id_carrera}', 'ControllerCarrera@eliminarCarrera')->name('eliminarCarrera');
+Route::get('editarCarrera/{id_carrera}','ControllerCarrera@editarCarrera')->name('editarCarrera');
+Route::put('updateCarrera', 'ControllerCarrera@updateCarrera')->name('updateCarrera');
+Route::post('searchCarrera', 'ControllerCarrera@searchCarrera')->name('searchCarrera');
