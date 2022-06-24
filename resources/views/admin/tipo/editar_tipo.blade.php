@@ -16,16 +16,16 @@
                         {{session('mensaje')}}
                     </div>
                 @endif
-                <form action="{{route('updateCarrera')}}" method="post" class="">
+                <form action="{{route('updateTipo')}}" method="post" class="">
                     @method('PUT')
                     @csrf
-                    <input type="hidden" name="id_carrera" value="{{$carrera->id}}">
+                    <input type="hidden" name="id_tipo" value="{{$tipo_->id}}">
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="ci" class=" form-control-label">Nombre de la Carrera</label>
+                            <label for="tipo" class=" form-control-label">Tipo de Coordinacion</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="nombre" placeholder="Nombre de la Carrera" class="form-control" required="true" value="{{$carrera->nombre}}">
+                            <input type="text" name="tipo" placeholder="Tipo de Coordinacion" class="form-control" required="true" value="{{$tipo_->tipo}}">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -41,7 +41,7 @@
                             </button>
                         </div>
                         <div class="col col-md-6">
-                            <a href="{{route('listaCarrera',$uri)}}" class="btn btn-danger btn-block">
+                            <a href="{{route('listaTipo',$uri)}}" class="btn btn-danger btn-block">
                                 <i class="fa fa-close"></i> Cancelar
                             </a>
                         </div>
@@ -49,7 +49,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                Carrera = {{$carrera->nombre}}, Estado = {{$carrera->estado}}, Id Carrera = {{$carrera->id}} .
+                Tipo de Coordinacion = {{$tipo_->tipo}}, Estado = {{$tipo_->estado}}, Id Tipo = {{$tipo_->id}} .
             </div>
         </div>
     </div>

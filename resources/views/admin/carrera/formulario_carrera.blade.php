@@ -39,7 +39,7 @@
                             </button>
                         </div>
                         <div class="col col-md-6">
-                            <a href="{{route('listaCarrera')}}" class="btn btn-danger btn-block">
+                            <a href="{{route('listaCarrera',$uri)}}" class="btn btn-danger btn-block">
                                 <i class="fa fa-close"></i> Cancelar
                             </a>
                         </div>

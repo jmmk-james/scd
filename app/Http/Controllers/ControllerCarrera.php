@@ -49,7 +49,13 @@ class ControllerCarrera extends Controller
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
             $titulo2="Agregar Carrera";
-            return view('admin.carrera.formulario_carrera',compact('usuario','titulo','titulo2'));
+
+            $id_search="1";
+            $tipo="Buscar Nombre de la Carrera";
+            $funcion="searchCarrera";
+            $uri=array('id_search'=>0,'search'=>0);
+
+            return view('admin.carrera.formulario_carrera',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri'));
         }
     	else
         	return redirect('/');
@@ -63,7 +69,8 @@ class ControllerCarrera extends Controller
             $carrera->nombre=$request->nombre;
             $carrera->estado=1;
             $carrera->save();
-            return redirect(route('listaCarrera'));
+            $uri=array('id_search'=>0,'search'=>0);
+            return redirect(route('listaCarrera',$uri));
         }
     	else
         	return redirect('/');
@@ -76,7 +83,8 @@ class ControllerCarrera extends Controller
             $carrera=App\Carrera::findOrFail($request->id_carrera);
             $carrera->nombre=$request->nombre;
             $carrera->save();
-            return redirect(route('listaCarrera'));
+            $uri=array('id_search'=>0,'search'=>0);
+            return redirect(route('listaCarrera',$uri));
         }
     	else
         	return redirect('/');
@@ -92,7 +100,8 @@ class ControllerCarrera extends Controller
             else
                 $carrera->estado=1;
             $carrera->save();
-            return redirect('listaCarrera');
+            $uri=array('id_search'=>0,'search'=>0);
+            return redirect(route('listaCarrera',$uri));
 
         }
         else
@@ -107,7 +116,13 @@ class ControllerCarrera extends Controller
             $titulo="Panel SCD";
             $carrera=App\Carrera::findOrFail($id_carrera);
             $titulo2="Editar Carrera : ".$carrera->nombre;
-            return view('admin.carrera.editar_carrera',compact('usuario','carrera','titulo','titulo2'));
+
+            $id_search="1";
+            $tipo="Buscar Nombre de la Carrera";
+            $funcion="searchCarrera";
+            $uri=array('id_search'=>0,'search'=>0);
+            
+            return view('admin.carrera.editar_carrera',compact('usuario','carrera','titulo','titulo2','id_search','tipo','funcion','uri'));
 
         }
         else

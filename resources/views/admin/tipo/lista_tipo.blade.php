@@ -7,35 +7,29 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Usuario</th>
-                    <th>Celular</th>
+                    <th>ID</th>
                     <th>Tipo</th>
-                    <th>Estado</th>
-                    <th><a href="{{route('listaUsuario',$uri)}}" class="btn btn-success">Ver todos</a></th>
+                    <th><a href="{{route('listaTipo',$uri)}}" class="btn btn-success">Ver todos</a>
+                    <a href="{{route('formularioTipo')}}" class="btn btn-info">Agregar</a></th>
                 </tr>
             </thead>
             <tbody>
-                <?php $i=0;
-                    $eliminar="Eliminar Usuario";
+                <?php
+                    $eliminar="Eliminar Tipo";
                     $icon=""; 
                 ?>
-                @foreach($lista_usuario as $value)
-                <?php $i=$i+1; ?>
+                @foreach($lista_tipo as $value)
                 <tr class="tr-shadow">
-                    <td>{{$i}}</td>
-                    <td>{{$value->correo}}
-                        <span class="badge badge-warning">{{$value->nombre}} {{$value->paterno}} {{$value->materno}}</span>
-                    </td>                    
-                    <td>{{$value->celular}}</td>
+                    <td>{{$value->id}}</td>
                     <td>{{$value->tipo}}</td>
                     <td>
                         @if($value->estado==1)
                         <span class="badge badge-success">Activo</span>
-                        <?php  $eliminar="Eliminar Usuario"; 
+                        <?php  $eliminar="Eliminar Tipo de Coordinacion"; 
                             $icon="zmdi-delete";?>
                         @else
                         <span class="badge badge-danger">Eliminado</span>
-                        <?php  $eliminar="Activar Usuario"; 
+                        <?php  $eliminar="Activar Tipo de Coordinacion"; 
                             $icon="zmdi-plus-square";?>
                         @endif
                     </td>
@@ -44,10 +38,10 @@
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                 <i class="zmdi zmdi-mail-send"></i>
                             </button>
-                            <a href="{{route('perfilUsuario',$value->usuario_id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Editar Usuario">
+                            <a href="{{route('editarTipo',$value->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Editar Usuario">
                                 <i class="zmdi zmdi-edit"></i>
                             </a>                            
-                            <a href="{{route('eliminarUsuario',$value->usuario_id)}}" class="item" data-toggle="tooltip" data-placement="top" title="{{$eliminar}}">
+                            <a href="{{route('eliminarTipo',$value->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="{{$eliminar}}">
                                 <i class="zmdi {{$icon}}"></i>
                             </a>
                         </div>

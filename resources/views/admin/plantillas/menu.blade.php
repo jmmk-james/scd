@@ -15,11 +15,18 @@
                         <i class="fas fa-user-circle"></i>Usuario</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li><a href="{{route('FormularioAgregarUsuario')}}">Agregar Usuario</a></li>
-                        <li><a href="{{route('listaUsuario')}}">Listar Usuarios</a></li>
+                        <li><a href="{{route('listaUsuario',$uri)}}">Listar Usuarios</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('listaCarrera',$uri)}}"><i class="fas fa-table"></i>Carreras</a></li>
-                <li><a href="form.html"><i class="far fa-check-square"></i>Forms</a></li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="far fa-check-square"></i>Coordinadores</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li><a href="{{route('listaTipo',$uri)}}">Tipos</a></li>
+                    </ul>
+                
+                </li>
                 <li><a href="calendar.html"><i class="fas fa-calendar-alt"></i>Calendar</a></li>
                 <li><a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a></li>
                 <li class="has-sub">

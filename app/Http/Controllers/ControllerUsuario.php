@@ -19,7 +19,13 @@ class ControllerUsuario extends Controller
             $titulo="Panel SCD-> Perfil";
             $titulo2="Perfil de Usuario";
             $datos=DB::table('view_datos_usuario')->where('usuario_id',$usuario->usuario_id)->first();
-            return view('admin.usuario.perfil',compact('usuario','datos','titulo','titulo2'));
+            
+            $id_search="1";
+            $tipo="Buscar en SCD";
+            $funcion="searchCarrera";
+            $uri=array('id_search'=>0,'search'=>0);
+
+            return view('admin.usuario.perfil',compact('usuario','datos','titulo','titulo2','id_search','tipo','funcion','uri'));
         }
     	else
         	return redirect('/');
@@ -33,7 +39,13 @@ class ControllerUsuario extends Controller
             $datos=DB::table('view_datos_usuario')->where('usuario_id',$id_usuario)->first();
             $titulo="Panel SCD";
             $titulo2="Perfil ".$datos->correo;
-            return view('admin.usuario.perfil_usuario',compact('usuario','datos','titulo','titulo2'));
+
+            $id_search="1";
+            $tipo="Buscar en SCD";
+            $funcion="searchCarrera";
+            $uri=array('id_search'=>0,'search'=>0);
+
+            return view('admin.usuario.perfil_usuario',compact('usuario','datos','titulo','titulo2','id_search','tipo','funcion','uri'));
         }
     	else
         	return redirect('/');
@@ -103,7 +115,13 @@ class ControllerUsuario extends Controller
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
             $titulo2="Agregar Usuario";
-            return view('admin.usuario.formulario_usuario',compact('usuario','titulo','titulo2'));
+
+            $id_search="1";
+            $tipo="Buscar en SCD ";
+            $funcion="searchCarrera";
+            $uri=array('id_search'=>0,'search'=>0);
+
+            return view('admin.usuario.formulario_usuario',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri'));
         }
         else
             return redirect('/');
@@ -140,14 +158,17 @@ class ControllerUsuario extends Controller
                 $usd->estado=1;
                 $usd->id_persona=$idPersona->id;
                 $usd->save();
-                return redirect(route('listaUsuario'));
+
+                $uri=array('id_search'=>0,'search'=>0);
+
+                return redirect(route('listaUsuario',$uri));
             }
             
         }
         else
             return redirect('/');
     }
-    public function listaUsuario()
+    public function listaUsuario($id_search,$search)
     {
         session_start();
         if(isset($_SESSION['usuario']))
@@ -155,11 +176,30 @@ class ControllerUsuario extends Controller
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
             $titulo2="Lista de Usuarios";
-            $lista_usuario=DB::table('view_datos_usuario')->get();
-            return view('admin.usuario.lista_usuario',compact('usuario','titulo','titulo2','lista_usuario'));
+            if($id_search>0)
+                $lista_usuario=DB::table('view_datos_usuario')->where('nombre','like','%'.$search.'%')->get();
+            else
+                $lista_usuario=DB::table('view_datos_usuario')->get();
+
+            $id_search="1";
+            $tipo="Buscar Usuario por Nombre";
+            $funcion="searchUsuario";
+            $uri=array('id_search'=>0,'search'=>0);
+            return view('admin.usuario.lista_usuario',compact('usuario','titulo','titulo2','lista_usuario','id_search','tipo','funcion','uri'));
         }
         else
             return redirect('/');
+    }
+    public function searchUsuario(Request $request)
+    {
+        session_start();
+    	if(isset($_SESSION['usuario']))
+        {
+            $uri=array('id_search'=>$request->id_search,'search'=>$request->search);
+            return redirect(route('listaUsuario',$uri));
+        }
+    	else
+        	return redirect('/');
     }
     public function eliminarUsuario($id_usuario)
     {
@@ -172,7 +212,8 @@ class ControllerUsuario extends Controller
             else
                 $usd->estado=1;
             $usd->save();
-            return redirect('listaUsuario');
+            $uri=array('id_search'=>0,'search'=>0);
+            return redirect(route('listaUsuario',$uri));
 
         }
         else

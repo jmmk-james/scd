@@ -39,7 +39,13 @@ class ControllerSecion extends Controller
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
             $titulo2="Panel SCD";
-            return view('admin.panel.escritorio',compact('usuario','titulo','titulo2'));
+
+            $id_search="1";
+            $tipo="Buscar en SCD ";
+            $funcion="searchCarrera";
+            $uri=array('id_search'=>0,'search'=>0);
+
+            return view('admin.panel.escritorio',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri'));
         }
     	else
         	return redirect('/');

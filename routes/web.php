@@ -32,8 +32,9 @@ Route::put('updateperfil','ControllerUsuario@updateperfil')->name('updateperfil'
 Route::put('updatepass','ControllerUsuario@updatepass')->name('updatepass');
 Route::get('FormularioAgregarUsuario','ControllerUsuario@FormularioAgregarUsuario')->name('FormularioAgregarUsuario');
 Route::post('AgregarUsuario','ControllerUsuario@AgregarUsuario')->name('AgregarUsuario');
-Route::get('listaUsuario','ControllerUsuario@listaUsuario')->name('listaUsuario');
+Route::get('listaUsuario/{id_search}/{search}','ControllerUsuario@listaUsuario')->name('listaUsuario');
 Route::get('eliminarUsuario/{id_usuario}',"Controllerusuario@eliminarUsuario")->name('eliminarUsuario');
+Route::post('searchUsuario', 'ControllerUsuario@searchUsuario')->name('searchUsuario');
 
 #---------------------- Modulo Carreras 
 Route::get('listaCarrera/{id_search}/{search}', 'ControllerCarrera@listaCarrera')->name('listaCarrera');
@@ -43,3 +44,12 @@ Route::get('eliminarCarrea/{id_carrera}', 'ControllerCarrera@eliminarCarrera')->
 Route::get('editarCarrera/{id_carrera}','ControllerCarrera@editarCarrera')->name('editarCarrera');
 Route::put('updateCarrera', 'ControllerCarrera@updateCarrera')->name('updateCarrera');
 Route::post('searchCarrera', 'ControllerCarrera@searchCarrera')->name('searchCarrera');
+
+#---------------------- Modulo Tipo
+Route::get('listaTipo/{id_search}/{search}', 'ControllerTipo@listaTipo')->name('listaTipo');
+Route::get('formularioTipo','ControllerTipo@formularioTipo')->name('formularioTipo');
+Route::post('agregarTipo', 'ControllerTipo@agregarTipo')->name('agregarTipo');
+Route::get('eliminarTipo/{id_tipo}', 'ControllerTipo@eliminarTipo')->name('eliminarTipo');
+Route::get('editarTipo/{id_tipo}','ControllerTipo@editarTipo')->name('editarTipo');
+Route::put('updateTipo', 'ControllerTipo@updateTipo')->name('updateTipo');
+Route::post('searchTipo', 'ControllerTipo@searchTipo')->name('searchTipo');
