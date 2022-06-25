@@ -18,14 +18,24 @@
                         <li><a href="{{route('listaUsuario',$uri)}}">Listar Usuarios</a></li>
                     </ul>
                 </li>
-                <li><a href="{{route('listaCarrera',$uri)}}"><i class="fas fa-table"></i>Carreras</a></li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-table"></i>Values</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li><a href="{{route('listaGrado',$uri)}}">Grados</a></li>
+                        <li><a href="{{route('listaTipo',$uri)}}">Tipos</a></li>
+                        <li><a href="{{route('listaCarrera',$uri)}}">Carreras</a></li>
+                    </ul>
+                
+                </li>
+
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="far fa-check-square"></i>Coordinadores</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li><a href="{{route('listaTipo',$uri)}}">Tipos</a></li>
+                        <li><a href="{{route('formularioCoordinador')}}">Nuevo Coordinador</a></li>
+                        <li><a href="{{route('listaCoordinador',$uri)}}">Lista Coordinadores</a></li>
                     </ul>
-                
                 </li>
                 <li><a href="calendar.html"><i class="fas fa-calendar-alt"></i>Calendar</a></li>
                 <li><a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a></li>

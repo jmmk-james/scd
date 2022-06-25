@@ -53,3 +53,19 @@ Route::get('eliminarTipo/{id_tipo}', 'ControllerTipo@eliminarTipo')->name('elimi
 Route::get('editarTipo/{id_tipo}','ControllerTipo@editarTipo')->name('editarTipo');
 Route::put('updateTipo', 'ControllerTipo@updateTipo')->name('updateTipo');
 Route::post('searchTipo', 'ControllerTipo@searchTipo')->name('searchTipo');
+
+#---------------------- Modulo Grado
+Route::get('listaGrado/{id_search}/{search}', 'ControllerGrado@listaGrado')->name('listaGrado');
+Route::get('formularioGrado','ControllerGrado@formularioGrado')->name('formularioGrado');
+Route::post('agregarGrado', 'ControllerGrado@agregarGrado')->name('agregarGrado');
+Route::get('editarGrado/{id_grado}','ControllerGrado@editarGrado')->name('editarGrado');
+Route::put('updateGrado', 'ControllerGrado@updateGrado')->name('updateGrado');
+Route::post('searchGrado', 'ControllerGrado@searchGrado')->name('searchGrado');
+
+#---------------------- Modulo Coordinador
+Route::get('listaCoordinador/{id_search}/{search}', 'ControllerCoordinador@listaCoordinador')->name('listaCoordinador');
+Route::get('formularioCoordinador','ControllerCoordinador@formularioCoordinador')->name('formularioCoordinador');
+Route::post('agregarCoordinador', 'ControllerCoordinador@agregarCoordinador')->name('agregarCoordinador');
+Route::get('perfilCoordinador/{id_coordinador}','ControllerCoordinador@perfilCoordinador')->name('perfilCoordinador');
+Route::put('updateCoordinador', 'ControllerCoordinador@updateCoordinador')->name('updateCoordinador');
+Route::post('searchCoordinador', 'ControllerCoordinador@searchCoordinador')->name('searchCoordinador');

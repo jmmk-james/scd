@@ -9,7 +9,7 @@
                     <th>#</th>
                     <th>ID</th>
                     <th>Tipo</th>
-                    <th><a href="{{route('listaTipo',$uri)}}" class="btn btn-success">Ver Todos</a>
+                    <th><a href="{{route('listaTipo',$uri)}}" class="btn btn-success">Ver todos</a>
                     <a href="{{route('formularioTipo')}}" class="btn btn-info">Agregar</a></th>
                 </tr>
             </thead>
