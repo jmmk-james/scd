@@ -18,11 +18,16 @@ class ControllerCoordinador extends Controller
             $titulo="Panel SCD";
             $titulo2="Lista de Coordinadores";
             if($id_search>0)
-                //$lista_coordinador=App\Carrera::where('nombre','like','%'.$search.'%')->get();
-                $lista_coordinador=App\Coordinador::all();
+            {
+                
+                $l=DB::table('view_datos_coordinador')->where('nombre','like','%'.$search.'%')->get();
+                $lp=DB::table('view_datos_coordinador')->where('paterno','like','%'.$search.'%')->get();
+                $lm=DB::table('view_datos_coordinador')->where('materno','like','%'.$search.'%')->get();
+                $lista_coordinador=$l->concat($lp->concat($lm));
+            }
             else
-                $lista_coordinador=App\Coordinador::all();
-            
+                $lista_coordinador=DB::table('view_datos_coordinador')->get();
+                            
             $id_search="1";
             $tipo="Buscar Coordinador";
             $funcion="searchCoordinador";
@@ -54,13 +59,14 @@ class ControllerCoordinador extends Controller
             $titulo2="Registrar Nuevo Coordinador";
 
             $grado=App\Grado::all();
+            $tipos=App\Tipo::all();
 
             $id_search="1";
             $tipo="Buscar Coordinador";
             $funcion="searchCoordinador";
             $uri=array('id_search'=>0,'search'=>0);
 
-            return view('admin.coordinador.formulario_coordinador',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri','grado'));
+            return view('admin.coordinador.formulario_coordinador',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri','grado','tipos'));
         }
     	else
         	return redirect('/');
@@ -70,8 +76,8 @@ class ControllerCoordinador extends Controller
         session_start();
     	if(isset($_SESSION['usuario']))
         {
-            $p=App\Persona::where('ci',$request->ci)->get();
-            $px=App\Persona::where('correo',$request->correo)->get();
+            $p=App\Persona::where('ci',$request->ci)->first();
+            $px=App\Persona::where('correo',$request->correo)->first();
 
             if(isset($p) or isset($px))
             {
@@ -95,10 +101,10 @@ class ControllerCoordinador extends Controller
                 $id_persona=$persona->last();
 
                 $coordinador=new App\Coordinador;
-                $coordinador->grado=$request->grado;
-                $coordinador->id_tipo=$request->tipo;
                 $coordinador->firma=$name;
                 $coordinador->id_persona=$id_persona->id;
+                $coordinador->id_grado=$request->grado;
+                $coordinador->id_tipo=$request->tipo;
                 $coordinador->save();
 
                 $uri=array('id_search'=>0,'search'=>0);

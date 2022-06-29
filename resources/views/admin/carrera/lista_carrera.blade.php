@@ -2,28 +2,22 @@
 
 @section('label1')
 <div class="col-md-12">
-    <div class="table-data__tool">
-        <div class="table-data__tool-left">
-            
-        </div>
-        <div class="table-data__tool-right">
-            <a href="{{route('listaCarrera',$uri)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                <i class="zmdi zmdi-filter-list"></i>Todas las Carreras
-            </a>
-            <a href="{{route('formularioCarrera')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                <i class="zmdi zmdi-plus"></i>add carrera
-            </a>
-        </div>
-    </div>
-
-    <div class="table-responsive table-responsive-data2">
-        <table class="table table-data2">
+    
+    <div class="table-responsive table-responsive-data3">
+        <table class="table table-data3">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Carrera</th>
                     <th>Estado</th>
-                    <th></th>
+                    <th>
+                        <a href="{{route('listaCarrera',$uri)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-filter-list"></i>Ver Todas 
+                        </a>
+                        <a href="{{route('formularioCarrera')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>add carrera
+                        </a>
+                    </th>
                 </tr>
             </thead>
             <tbody>

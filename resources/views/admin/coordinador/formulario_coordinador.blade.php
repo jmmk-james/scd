@@ -58,7 +58,7 @@
                             <label for="grado" class="form-control-label">Grado Academico</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <select name="grado" class="form-control">
+                            <select name="grado" class="form-control" required="true">
                                 <option value="">Seleccionar</option>
                                 @foreach($grado as $value)
                                 <option value="{{$value->id}}">{{$value->nombre}} ({{$value->corto}})</option>
@@ -67,7 +67,37 @@
                         </div>
                     </div>
 
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="correo" class=" form-control-label">E-mail</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="email" name="correo" class="form-control" placeholder="Correo" required="true">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="celular" class=" form-control-label">Celular</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="celular" class="form-control" placeholder="Celular del coordinador" required="true">
+                        </div>
+                    </div> 
                     
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="grado" class="form-control-label">Cargo</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <select name="tipo" class="form-control" required="true">
+                                <option value="">Seleccionar</option>
+                                @foreach($tipos as $value)
+                                <option value="{{$value->id}}">{{$value->tipo}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="row form-group">
                         <div class="col col-md-6">

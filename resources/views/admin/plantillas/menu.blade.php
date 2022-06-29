@@ -23,7 +23,7 @@
                         <i class="fas fa-table"></i>Values</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li><a href="{{route('listaGrado',$uri)}}">Grados</a></li>
-                        <li><a href="{{route('listaTipo',$uri)}}">Tipos</a></li>
+                        <li><a href="{{route('listaTipo',$uri)}}">Tipos y Cargos</a></li>
                         <li><a href="{{route('listaCarrera',$uri)}}">Carreras</a></li>
                     </ul>
                 
