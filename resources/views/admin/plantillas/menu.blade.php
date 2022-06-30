@@ -37,8 +37,15 @@
                         <li><a href="{{route('listaCoordinador',$uri)}}">Lista Coordinadores</a></li>
                     </ul>
                 </li>
-                <li><a href="calendar.html"><i class="fas fa-calendar-alt"></i>Calendar</a></li>
-                <li><a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a></li>
+
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fa fa-bars"></i>Cursos</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li><a href="{{route('formularioCurso')}}">Nuevo Curso</a></li>
+                        <li><a href="{{route('listaCurso',$uri)}}">Lista Cursos</a></li>
+                    </ul>
+                </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-copy"></i>Pages</a>

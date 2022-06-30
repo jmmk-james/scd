@@ -67,5 +67,18 @@ Route::get('listaCoordinador/{id_search}/{search}', 'ControllerCoordinador@lista
 Route::get('formularioCoordinador','ControllerCoordinador@formularioCoordinador')->name('formularioCoordinador');
 Route::post('agregarCoordinador', 'ControllerCoordinador@agregarCoordinador')->name('agregarCoordinador');
 Route::get('perfilCoordinador/{id_coordinador}','ControllerCoordinador@perfilCoordinador')->name('perfilCoordinador');
+Route::put('updatePersonaCoordinador', 'ControllerCoordinador@updatePersonaCoordinador')->name('updatePersonaCoordinador');
 Route::put('updateCoordinador', 'ControllerCoordinador@updateCoordinador')->name('updateCoordinador');
+Route::put('updateFirmaCoordinador', 'ControllerCoordinador@updateFirmaCoordinador')->name('updateFirmaCoordinador');
 Route::post('searchCoordinador', 'ControllerCoordinador@searchCoordinador')->name('searchCoordinador');
+
+#---------------------- Modulo Curso
+Route::get('listaCurso/{id_search}/{search}', 'ControllerCurso@listaCurso')->name('listaCurso');
+Route::get('formularioCurso','ControllerCurso@formularioCurso')->name('formularioCurso');
+Route::post('agregarCurso', 'ControllerCurso@agregarCurso')->name('agregarCurso');
+Route::get('perfilCurso/{id_coordinador}','ControllerCurso@perfilCurso')->name('perfilCurso');
+Route::put('updatePersonaCoordinador', 'ControllerCurso@updatePersonaCoordinador')->name('updatePersonaCoordinador');
+Route::put('updateCoordinador', 'ControllerCurso@updateCurso')->name('updateCurso');
+Route::put('updateFirmaCoordinador', 'ControllerCurso@updateFirmaCoordinador')->name('updateFirmaCoordinador');
+Route::post('searchCurso', 'ControllerCurso@searchCurso')->name('searchCurso');
+

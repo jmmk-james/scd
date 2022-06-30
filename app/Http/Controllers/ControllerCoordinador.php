@@ -100,6 +100,13 @@ class ControllerCoordinador extends Controller
                 $persona=App\Persona::all();
                 $id_persona=$persona->last();
 
+                if($request->tipo ==2)
+                    DB::update('update Coordinadors set id_tipo = 1 where id_tipo = ?', ['2']);
+                if($request->tipo ==3)
+                    DB::update('update Coordinadors set id_tipo = 1 where id_tipo = ?', ['3']);
+                if($request->tipo ==4)
+                    DB::update('update Coordinadors set id_tipo = 1 where id_tipo = ?', ['4']);
+
                 $coordinador=new App\Coordinador;
                 $coordinador->firma=$name;
                 $coordinador->id_persona=$id_persona->id;
@@ -115,29 +122,62 @@ class ControllerCoordinador extends Controller
     	else
         	return redirect('/');
     }
-    public function updateCoordinador(Request $request)
+    public function updatePersonaCoordinador(Request $request)
     {
         session_start();
     	if(isset($_SESSION['usuario']))
         {
-            $carrera=App\Carrera::findOrFail($request->id_carrera);
-            $carrera->nombre=$request->nombre;
-            $carrera->save();
-
             $persona= App\Persona::findOrFail($request->id_persona);
             $persona->nombre=$request->nombre;
             $persona->paterno=$request->paterno;
             $persona->materno=$request->materno;
             $persona->celular=$request->celular;
+            $persona->ci=$request->ci;
             $persona->save();
 
-            $coordinador=App\Coordinador::findOrFail($request->id_coordinador);
-            $coordinador->grado=$request->grado;
+            $uri=array('id_search'=>0,'search'=>0);
+            return back()->with('mensaje','Los datos del coordinador fueron actualizados correctamente.');
+        }
+    	else
+        	return redirect('/');
+    }
+    public function updateCoordinador(Request $request)
+    {
+        session_start();
+    	if(isset($_SESSION['usuario']))
+        {
+            if($request->tipo ==2)
+                DB::update('update Coordinadors set id_tipo = 1 where id_tipo = ?', ['2']);
+            if($request->tipo ==3)
+                DB::update('update Coordinadors set id_tipo = 1 where id_tipo = ?', ['3']);
+            if($request->tipo ==4)
+                DB::update('update Coordinadors set id_tipo = 1 where id_tipo = ?', ['4']);
+
+            $coordinador= App\Coordinador::findOrFail($request->id_coordinador);
+            $coordinador->id_grado=$request->grado;
             $coordinador->id_tipo=$request->tipo;
             $coordinador->save();
 
             $uri=array('id_search'=>0,'search'=>0);
-            return redirect(route('listaCoordinador',$uri));
+            return back()->with('mensaje','Los datos del coordinador fueron actualizados correctamente.');
+        }
+    	else
+        	return redirect('/');
+    }
+    public function updateFirmaCoordinador(Request $request)
+    {
+        session_start();
+    	if(isset($_SESSION['usuario']))
+        {
+            $name=$request->file('firma')->store('public/firma');
+            $name=str_replace('public/firma/','', $name);
+
+            $coordinador= App\Coordinador::findOrFail($request->id_coordinador);
+            $coordinador->firma=$name;
+            $coordinador->save();
+
+            $uri=array('id_search'=>0,'search'=>0);
+            return back()->with('mensaje','Firma del coordinador fueron actualizada correctamente.');
         }
     	else
         	return redirect('/');
@@ -149,7 +189,10 @@ class ControllerCoordinador extends Controller
         {
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
-            $coordinador=App\Coordinador::findOrFail($id_coordinador);
+
+            $coordinador=DB::table('view_datos_coordinador')->where('id_coordinador',$id_coordinador)->first();
+            $grado=App\Grado::all();
+            $tipos=App\Tipo::all();
 
             $titulo2="Datos del Coordinador : ".$coordinador->nombre;
 
@@ -158,7 +201,7 @@ class ControllerCoordinador extends Controller
             $funcion="searchCoordinador";
             $uri=array('id_search'=>0,'search'=>0);
             
-            return view('admin.coordinador.perfil_coordinador',compact('usuario','coordinador','titulo','titulo2','id_search','tipo','funcion','uri'));
+            return view('admin.coordinador.perfil_coordinador',compact('usuario','coordinador','titulo','titulo2','id_search','tipo','funcion','uri','grado','tipos'));
 
         }
         else

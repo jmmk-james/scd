@@ -16,10 +16,12 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->text('titulo');
+            $table->text('detalle');
             $table->text('tipo');
             $table->integer('carga');
             $table->string('fecha',20);
             $table->integer('gestion');
+            $table->text('promo');
             $table->text('plantilla');
             $table->timestamps();
         });
