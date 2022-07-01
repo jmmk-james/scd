@@ -66,8 +66,8 @@ class ControllerGrado extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $grado=new App\Grado;
-            $grado->nombre=$request->nombre;
-            $grado->corto=$request->corto;
+            $grado->nombre=ucwords($request->nombre);
+            $grado->corto=ucwords($request->corto);
             $grado->save();
             $uri=array('id_search'=>0,'search'=>0);
             return redirect(route('listaGrado',$uri));
@@ -81,8 +81,8 @@ class ControllerGrado extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $grado=App\Grado::findOrFail($request->id_grado);
-            $grado->nombre=$request->nombre;
-            $grado->corto=$request->corto;
+            $grado->nombre=ucwords($request->nombre);
+            $grado->corto=ucwords($request->corto);
             $grado->save();
             $uri=array('id_search'=>0,'search'=>0);
             return redirect(route('listaGrado',$uri));

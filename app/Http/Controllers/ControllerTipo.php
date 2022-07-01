@@ -66,7 +66,7 @@ class ControllerTipo extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $tipo=new App\Tipo;
-            $tipo->tipo=$request->tipo;
+            $tipo->tipo=ucwords($request->tipo);
             $tipo->estado=1;
             $tipo->save();
             $uri=array('id_search'=>0,'search'=>0);
@@ -81,7 +81,7 @@ class ControllerTipo extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $tipo=App\Tipo::findOrFail($request->id_tipo);
-            $tipo->tipo=$request->tipo;
+            $tipo->tipo=ucwords($request->tipo);
             $tipo->save();
             $uri=array('id_search'=>0,'search'=>0);
             return redirect(route('listaTipo',$uri));

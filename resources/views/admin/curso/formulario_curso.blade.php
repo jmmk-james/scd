@@ -16,71 +16,84 @@
                         {{session('mensaje')}}
                     </div>
                 @endif
-                <form action="{{route('agregarCoordinador')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('agregarCurso')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="ci" class=" form-control-label">C.I.</label>
+                            <label for="titulo" class=" form-control-label">Titulo</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="ci" class="form-control" placeholder="C.I."  required="true">
+                            <input type="text" name="titulo" class="form-control" placeholder="Titulo"  required="true">
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="nombre" class=" form-control-label">Nombre</label>
+                            <label for="detalle" class=" form-control-label">Detalle</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre del Coordinador"  required="true">
+                            <textarea name="detalle" class="form-control" placeholder="Detalle"  required="true"></textarea>
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="paterno" class=" form-control-label">Apellido Paterno</label>
+                            <label for="tipo" class=" form-control-label">Tipo</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="paterno" class="form-control" placeholder="Apellido Paterno">
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="materno" class=" form-control-label">Apellido Materno</label>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="text" name="materno" class="form-control" placeholder="Apellido Materno">
-                        </div>
-                    </div>
-
-                    
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="correo" class=" form-control-label">E-mail</label>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="email" name="correo" class="form-control" placeholder="Correo" required="true">
+                            <select name="id_tipocurso" class="form-control" required="true">
+                                <option value="">Seleccionar </option>
+                                @foreach($tipoCurso as $value)
+                                <option value="{{$value->id}}">{{$value->tipo}} {{$value->code}}</option>
+                                @endforeach 
+                            </select>                            
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="celular" class=" form-control-label">Celular</label>
+                            <label for="carga" class=" form-control-label">Carga Horaria</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="celular" class="form-control" placeholder="Celular del coordinador" required="true">
-                        </div>
-                    </div> 
-                    
-                    
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="firma" class=" form-control-label">Firmar (solo .png)</label>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="file" name="firma" class="form-control" accept="image/png" required="true">
+                            <input type="text" name="carga" class="form-control" placeholder="Carga Horaria" value="0" required="true">
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="fecha" class=" form-control-label">Fecha</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="date" name="fecha" class="form-control" required="true">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="relevancia" class=" form-control-label">Relevancia</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <textarea name="relevancia" class="form-control" placeholder="Relevancia"  required="true"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="promo" class=" form-control-label">Imagen Promocional</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="file" name="promo" class="form-control" accept="image/png,image/jpeg" required="true">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="plantilla" class=" form-control-label">Plantilla Certificado</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="file" name="plantilla" class="form-control" accept="image/jpeg" required="true">
+                        </div>
+                    </div>
+
                     <div class="row form-group">
                         <div class="col-12 col-md-12">
                             <hr>
@@ -102,7 +115,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                El Tipo de Coordinacion  Registrado es automaticamente Activada para la seleccion del mismo.
+                Los datos para el Curso Registrados en el Sistema seran publicados cuando se agreguen coordinadores (firmas del certificado).
             </div>
         </div>
     </div>

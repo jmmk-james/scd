@@ -56,9 +56,9 @@ class ControllerUsuario extends Controller
         if(isset($_SESSION['usuario']))
         {
             $persona=App\Persona::findOrFail($request->id);
-            $persona->nombre=$request->nombre;
-            $persona->paterno=$request->paterno;
-            $persona->materno=$request->materno;
+            $persona->nombre=ucwords($request->nombre);
+            $persona->paterno=ucwords($request->paterno);
+            $persona->materno=ucwords($request->materno);
             $persona->ci=$request->ci;
             $persona->celular=$request->celular;
             $persona->save();
@@ -140,9 +140,9 @@ class ControllerUsuario extends Controller
             else
             {
                 $persona= new App\Persona;
-                $persona->nombre=$request->nombre;
-                $persona->paterno=$request->paterno;
-                $persona->materno=$request->materno;
+                $persona->nombre=ucwords($request->nombre);
+                $persona->paterno=ucwords($request->paterno);
+                $persona->materno=ucwords($request->materno);
                 $persona->ci=$request->ci;
                 $persona->celular=$request->celular;
                 $persona->correo=$request->correo;

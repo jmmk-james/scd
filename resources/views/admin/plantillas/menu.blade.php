@@ -9,7 +9,7 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li><a href="chart.html"><i class="fas fa-chart-bar"></i>Charts</a></li>
+                <li><a href="{{route('scd')}}"><i class="fas fa-chart-bar"></i>Escritorio</a></li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-user-circle"></i>Usuario</a>
@@ -25,6 +25,7 @@
                         <li><a href="{{route('listaGrado',$uri)}}">Grados</a></li>
                         <li><a href="{{route('listaTipo',$uri)}}">Tipos y Cargos</a></li>
                         <li><a href="{{route('listaCarrera',$uri)}}">Carreras</a></li>
+                        <li><a href="{{route('listaTipoCurso',$uri)}}">Tipos de Cursos</a></li>
                     </ul>
                 
                 </li>

@@ -8,12 +8,8 @@
             <section class="card">
                 <div class="card-header user-header alt bg-dark">
                     <div class="media">
-                        <a href="#">
-                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{asset('admin/assets/images/icon/avatar-01.png')}}">
-                        </a>
                         <div class="media-body">
-                            <h2 class="text-light display-6">{{$coordinador->nombre}} {{$coordinador->paterno}} {{$coordinador->materno}}</h2>
-                            
+                            <h4 class="text-light display-6">{{$curso->titulo}}</h4>
                         </div>
                     </div>
                     @if(session('mensaje'))
@@ -28,24 +24,15 @@
                     @endif
                 </div>
 
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <a href="#">Cord. : </a> {{$coordinador->corto}} {{$coordinador->nombre}} {{$coordinador->paterno}} {{$coordinador->materno}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">Cargo : </a> {{$coordinador->tipo}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">E-mail : </a> {{$coordinador->correo}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">C.i. : </a> {{$coordinador->ci}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">Celular : </a> {{$coordinador->celular}}
-                    </li>
-                </ul>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col col-md-6">ID :</div><div class="col col-md-6">{{$curso->id_curso}}</div>
+                        <div class="col col-md-6">Tipo :</div><div class="col col-md-6">{{$curso->tipo}}</div>
+                        <div class="col col-md-6">Codigo :</div><div class="col col-md-6">{{$curso->code}}</div>
+                        <div class="col col-md-6">C. Horaria :</div><div class="col col-md-6">{{$curso->carga}}</div>
+                        <div class="col col-md-6">Fecha :</div><div class="col col-md-6">{{$curso->fecha}}</div>
+                    </div>
+                </div>
 
             </section>
         </aside>
@@ -72,70 +59,66 @@
                     </nav>
                     <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href="#">Cord. : </a> {{$coordinador->corto}} {{$coordinador->nombre}} {{$coordinador->paterno}} {{$coordinador->materno}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">Cargo : </a> {{$coordinador->tipo}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">E-mail : </a> {{$coordinador->correo}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">C.i. : </a> {{$coordinador->ci}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">Celular : </a> {{$coordinador->celular}}
-                                </li>
-                            </ul>
+                            <div class="row">
+                                <div class="col col-md-4">ID :</div><div class="col col-md-8">{{$curso->id_curso}}</div>
+                                <div class="col col-md-4">Titulo :</div><div class="col col-md-8">{{$curso->titulo}}</div>
+                                <div class="col col-md-4">Detalle :</div><div class="col col-md-8">{{$curso->detalle}}</div>
+                                <div class="col col-md-4">Carga Horaria :</div><div class="col col-md-8">{{$curso->carga}}</div>
+                                <div class="col col-md-4">Fecha :</div><div class="col col-md-8">{{$curso->fecha}}</div>
+                                <div class="col col-md-4">Tipo :</div><div class="col col-md-8">{{$curso->tipo}}</div>
+                                <div class="col col-md-4">Relevancia :</div><div class="col col-md-8">{{$curso->relevancia}}</div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <form action="{{route('updatePersonaCoordinador')}}" method="post" class="form-horizontal">
                                 @method('PUT')
                                 @csrf
-                                <input type="hidden" name="id_persona" value="{{$coordinador->id_persona}}">
+                                <input type="hidden" name="id_curso" value="{{$curso->id_curso}}">
                                 <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="nombre" class=" form-control-label">Nombre</label>
+                                    <div class="col col-md-4">
+                                        <label for="titulo" class=" form-control-label">Titulo</label>
                                     </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="nombre" placeholder="Nombre" class="form-control" value="{{$coordinador->nombre}}">
+                                    <div class="col-12 col-md-8">
+                                        <input type="text" name="titulo" class="form-control" placeholder="Titulo"  required="true" value="{{$curso->titulo}}">
                                     </div>
                                 </div>
+            
                                 <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="paterno" class=" form-control-label">A. Paterno</label>
+                                    <div class="col col-md-4">
+                                        <label for="detalle" class=" form-control-label">Detalle</label>
                                     </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="paterno" placeholder="Apellido Paterno" class="form-control" value="{{$coordinador->paterno}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="materno" class=" form-control-label">A. Materno</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="materno" placeholder="Apellido Materno" class="form-control" value="{{$coordinador->materno}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="ci" class=" form-control-label">C.I.</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="ci" placeholder="C.I." class="form-control" value="{{$coordinador->ci}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="celular" class=" form-control-label">Celular</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="celular" placeholder="Celular" class="form-control" value="{{$coordinador->celular}}">
+                                    <div class="col-12 col-md-8">
+                                        <textarea name="detalle" class="form-control" placeholder="Detalle"  required="true">{{$curso->detalle}}</textarea>
                                     </div>
                                 </div>
 
+                                <div class="row form-group">
+                                    <div class="col col-md-4">
+                                        <label for="carga" class=" form-control-label">Carga Horaria</label>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <input type="text" name="carga" class="form-control" placeholder="Carga Horaria" value="{{$curso->carga}}" required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-4">
+                                        <label for="fecha" class=" form-control-label">Fecha</label>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <input type="date" name="fecha" class="form-control" required="true" value="{{$curso->fecha}}">
+                                    </div>
+                                </div>
+            
+                                <div class="row form-group">
+                                    <div class="col col-md-4">
+                                        <label for="relevancia" class=" form-control-label">Relevancia</label>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <textarea name="relevancia" class="form-control" placeholder="Relevancia"  required="true">{{$curso->relevancia}}</textarea>
+                                    </div>
+                                </div>
+
+                                
                                 <div class="row form-group">
                                     <div class="col col-md-6">
                                         <button type="submit" class="btn btn-success btn-block">
@@ -153,7 +136,7 @@
                             <form action="{{route('updateCoordinador')}}" method="post" class="form-horizontal">
                                 @method('PUT')
                                 @csrf
-                                <input type="hidden" name="id_coordinador" value="{{$coordinador->id_coordinador}}">
+                                <input type="hidden" name="id_coordinador" value="">
                                 
                                 <div class="row form-group">
                                     <div class="col col-md-6">
@@ -161,10 +144,8 @@
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <select name="grado" class="form-control" required="true">
-                                            <option value="{{$coordinador->id_grado}}">Seleccionar</option>
-                                            @foreach($grado as $value)
-                                            <option value="{{$value->id}}">{{$value->nombre}} ({{$value->corto}})</option>
-                                            @endforeach
+                                            <option value="">Seleccionar</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -175,10 +156,8 @@
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <select name="tipo" class="form-control" required="true">
-                                            <option value="{{$coordinador->id_tipo}}">Seleccionar</option>
-                                            @foreach($tipos as $value)
-                                            <option value="{{$value->id}}">{{$value->tipo}}</option>
-                                            @endforeach
+                                            <option value="">Seleccionar</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -202,7 +181,7 @@
                             <form action="{{route('updateFirmaCoordinador')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
-                                <input type="hidden" name="id_coordinador" value="{{$coordinador->id_coordinador}}">
+                                <input type="hidden" name="id_coordinador" value="">
                                 <div class="row form-group">
                                     <div class="col col-md-6">
                                         <label for="firma" class=" form-control-label">Firmar (solo .png)</label>

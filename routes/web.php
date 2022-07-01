@@ -72,13 +72,23 @@ Route::put('updateCoordinador', 'ControllerCoordinador@updateCoordinador')->name
 Route::put('updateFirmaCoordinador', 'ControllerCoordinador@updateFirmaCoordinador')->name('updateFirmaCoordinador');
 Route::post('searchCoordinador', 'ControllerCoordinador@searchCoordinador')->name('searchCoordinador');
 
+
+#---------------------- Modulo Tipo Curso
+Route::get('listaTipoCurso/{id_search}/{search}', 'ControllerTipoCurso@listaTipoCurso')->name('listaTipoCurso');
+Route::get('formularioTipoCurso','ControllerTipoCurso@formularioTipoCurso')->name('formularioTipoCurso');
+Route::post('agregarTipoCurso', 'ControllerTipoCurso@agregarTipoCurso')->name('agregarTipoCurso');
+Route::get('eliminarTipoCurso/{id_tipo_curso}', 'ControllerTipoCurso@eliminarTipoCurso')->name('eliminarTipoCurso');
+Route::get('editarTipoCurso/{id_tipo_curso}','ControllerTipoCurso@editarTipoCurso')->name('editarTipoCurso');
+Route::put('updateTipoCurso', 'ControllerTipoCurso@updateTipoCurso')->name('updateTipoCurso');
+Route::post('searchTipoCurso', 'ControllerTipoCurso@searchTipoCurso')->name('searchTipoCurso');
+
 #---------------------- Modulo Curso
 Route::get('listaCurso/{id_search}/{search}', 'ControllerCurso@listaCurso')->name('listaCurso');
 Route::get('formularioCurso','ControllerCurso@formularioCurso')->name('formularioCurso');
 Route::post('agregarCurso', 'ControllerCurso@agregarCurso')->name('agregarCurso');
-Route::get('perfilCurso/{id_coordinador}','ControllerCurso@perfilCurso')->name('perfilCurso');
+Route::get('perfilCurso/{id_curso}','ControllerCurso@perfilCurso')->name('perfilCurso');
 Route::put('updatePersonaCoordinador', 'ControllerCurso@updatePersonaCoordinador')->name('updatePersonaCoordinador');
-Route::put('updateCoordinador', 'ControllerCurso@updateCurso')->name('updateCurso');
-Route::put('updateFirmaCoordinador', 'ControllerCurso@updateFirmaCoordinador')->name('updateFirmaCoordinador');
+Route::put('updateCurso', 'ControllerCurso@updateCurso')->name('updateCurso');
+//Route::put('updateFirmaCoordinador', 'ControllerCurso@updateFirmaCoordinador')->name('updateFirmaCoordinador');
 Route::post('searchCurso', 'ControllerCurso@searchCurso')->name('searchCurso');
 

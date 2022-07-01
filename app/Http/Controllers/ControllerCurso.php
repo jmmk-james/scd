@@ -58,12 +58,14 @@ class ControllerCurso extends Controller
             $titulo="Panel SCD";
             $titulo2="Registrar Nuevo Curso";
 
+            $tipoCurso=App\TipoCurso::where('estado','1')->get();
+
             $id_search="1";
             $tipo="Buscar Curso";
             $funcion="searchCurso";
             $uri=array('id_search'=>0,'search'=>0);
 
-            return view('admin.curso.formulario_curso',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri'));
+            return view('admin.curso.formulario_curso',compact('usuario','titulo','titulo2','id_search','tipo','funcion','uri','tipoCurso'));
         }
     	else
         	return redirect('/');
@@ -80,21 +82,21 @@ class ControllerCurso extends Controller
             $plantilla=str_replace('public/plantilla/','', $plantilla);
 
             $curso= new App\Curso;
-            $curso->titulo=$request->titulo;
-            $curso->detalle=$request->detalle;
-            $curso->tipo=$request->tipo;
+            $curso->titulo=ucwords($request->titulo);
+            $curso->detalle=ucwords($request->detalle);
             $curso->carga=$request->carga;
             $curso->fecha=$request->fecha;
             $curso->gestion=date("Y");
+            $curso->relevancia=$request->relevancia;
             $curso->promo=$promo;
             $curso->plantilla=$plantilla;
+            $curso->id_tipocurso=$request->id_tipocurso;
             $curso->save();
 
             $curso=App\Curso::all();
             $id_curso=$curso->last();
 
-            $uri=array('id_search'=>0,'search'=>0);
-            return redirect(route('perfilCurso',$uri));
+            return redirect(route('perfilCurso',$id_curso));
 
         }
     	else
@@ -138,17 +140,15 @@ class ControllerCurso extends Controller
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
 
-            $coordinador=DB::table('view_datos_curso')->where('id_curso',$id_curso)->first();
-            
-
-            $titulo2="Datos del Coordinador : ".$coordinador->nombre;
+            $curso=DB::table('view_datos_curso')->where('id_curso',$id_curso)->first();
+            $titulo2="Datos del Curso : ".$curso->titulo;
 
             $id_search="1";
             $tipo="Buscar Curso";
             $funcion="searchCurso";
             $uri=array('id_search'=>0,'search'=>0);
             
-            return view('admin.curso.perfil_curso',compact('usuario','coordinador','titulo','titulo2','id_search','tipo','funcion','uri'));
+            return view('admin.curso.perfil_curso',compact('usuario','curso','titulo','titulo2','id_search','tipo','funcion','uri'));
 
         }
         else

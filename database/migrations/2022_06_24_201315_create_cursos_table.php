@@ -17,12 +17,13 @@ class CreateCursosTable extends Migration
             $table->id();
             $table->text('titulo');
             $table->text('detalle');
-            $table->text('tipo');
             $table->integer('carga');
             $table->string('fecha',20);
             $table->integer('gestion');
+            $table->text('relevancia');
             $table->text('promo');
             $table->text('plantilla');
+            $table->integer('id_tipocurso');
             $table->timestamps();
         });
     }

@@ -89,9 +89,9 @@ class ControllerCoordinador extends Controller
                 $name=str_replace('public/firma/','', $name);
 
                 $persona= new App\Persona;
-                $persona->nombre=$request->nombre;
-                $persona->paterno=$request->paterno;
-                $persona->materno=$request->materno;
+                $persona->nombre=ucwords($request->nombre);
+                $persona->paterno=ucwords($request->paterno);
+                $persona->materno=ucwords($request->materno);
                 $persona->ci=$request->ci;
                 $persona->correo=$request->correo;
                 $persona->celular=$request->celular;
@@ -128,9 +128,9 @@ class ControllerCoordinador extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $persona= App\Persona::findOrFail($request->id_persona);
-            $persona->nombre=$request->nombre;
-            $persona->paterno=$request->paterno;
-            $persona->materno=$request->materno;
+            $persona->nombre=ucwords($request->nombre);
+            $persona->paterno=ucwords($request->paterno);
+            $persona->materno=ucwords($request->materno);
             $persona->celular=$request->celular;
             $persona->ci=$request->ci;
             $persona->save();
