@@ -32,6 +32,27 @@
                         <div class="col col-md-6">C. Horaria :</div><div class="col col-md-6">{{$curso->carga}}</div>
                         <div class="col col-md-6">Fecha :</div><div class="col col-md-6">{{$curso->fecha}}</div>
                     </div>
+                    <div class="row">
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <h4>Coordinadores</h4>
+                        <div class="table-responsive table-responsive-data3">
+                            <table>
+                                <tbody>
+                                    <?php $i=0;?>
+                                    @foreach($lista_validez as $value)
+                                    <?php $i=$i+1;?>
+                                    <tr class="tr-shadow">
+                                        <td>
+                                            {{$value->corto}} {{$value->nombre}} {{$value->paterno}} {{$value->materno}}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
             </section>
@@ -52,9 +73,9 @@
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
                              aria-selected="false">Editar Datos</a>
                             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact"
-                             aria-selected="false">Editar Coordinador</a>
+                             aria-selected="false">Tipo de Curso</a>
                             <a class="nav-item nav-link" id="nav-firma-tab" data-toggle="tab" href="#nav-firma" role="tab" aria-controls="nav-firma"
-                             aria-selected="false">Firma</a>
+                             aria-selected="false">Coordinadores</a>
                         </div>
                     </nav>
                     <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -70,7 +91,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <form action="{{route('updatePersonaCoordinador')}}" method="post" class="form-horizontal">
+                            <form action="{{route('updateCurso')}}" method="post" class="form-horizontal">
                                 @method('PUT')
                                 @csrf
                                 <input type="hidden" name="id_curso" value="{{$curso->id_curso}}">
@@ -133,35 +154,25 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <form action="{{route('updateCoordinador')}}" method="post" class="form-horizontal">
+                            <form action="{{route('updateTipoCurso')}}" method="post" class="form-horizontal">
                                 @method('PUT')
                                 @csrf
-                                <input type="hidden" name="id_coordinador" value="">
+                                <input type="hidden" name="id_curso" value="{{$curso->id_curso}}">
                                 
                                 <div class="row form-group">
                                     <div class="col col-md-6">
-                                        <label for="grado" class="form-control-label">Grado Academico</label>
+                                        <label for="tipo" class=" form-control-label">Tipo</label>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <select name="grado" class="form-control" required="true">
-                                            <option value="">Seleccionar</option>
-                                            
-                                        </select>
+                                        <select name="id_tipocurso" class="form-control" required="true">
+                                            <option value="{{$curso->id_tipo_curso}}">Seleccionar </option>
+                                            @foreach($tipoCurso as $value)
+                                            <option value="{{$value->id}}">{{$value->tipo}} {{$value->code}}</option>
+                                            @endforeach 
+                                        </select>                            
                                     </div>
                                 </div>
                                 
-                                <div class="row form-group">
-                                    <div class="col col-md-6">
-                                        <label for="grado" class="form-control-label">Cargo</label>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <select name="tipo" class="form-control" required="true">
-                                            <option value="">Seleccionar</option>
-                                            
-                                        </select>
-                                    </div>
-                                </div>
-
                                 
                                 <div class="row form-group">
                                     <div class="col col-md-6">
@@ -178,30 +189,42 @@
                     
 
                         <div class="tab-pane fade" id="nav-firma" role="tabpanel" aria-labelledby="nav-firma-tab">
-                            <form action="{{route('updateFirmaCoordinador')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
-                                @method('PUT')
-                                @csrf
-                                <input type="hidden" name="id_coordinador" value="">
-                                <div class="row form-group">
-                                    <div class="col col-md-6">
-                                        <label for="firma" class=" form-control-label">Firmar (solo .png)</label>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <input type="file" name="firma" class="form-control" accept="image/png" required="true">
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="table-responsive table-responsive-data3">
+                                    <table class="table table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Coordinador</th>
+                                                <th>
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#staticModal">
+                                                        <i class="zmdi zmdi-plus"></i>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i=0;?>
+                                            @foreach($lista_validez as $value)
+                                            <?php $i=$i+1;?>
+                                            <tr class="tr-shadow">
+                                                <td>{{$i}}</td>
+                                                <td>
+                                                    {{$value->corto}} {{$value->nombre}} {{$value->paterno}} {{$value->materno}} {{$value->cargo}}
+                                                </td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <a href="{{route('perfilCoordinador',$value->id_validez)}}" class="item" data-toggle="tooltip" data-placement="top" title="Eliminar Coordinador">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </a>                            
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                                
-                                <div class="row form-group">
-                                    <div class="col col-md-6">
-                                        <button type="submit" class="btn btn-success btn-block">
-                                            <i class="fa fa-check"></i> Actualizar
-                                        </button>
-                                    </div>
-                                    <div class="col col-md-6">
-                                        
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,4 +232,87 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <aside class="profile-nav alt">
+            <section class="card">
+                <div class="card-header">
+                    Imagen Promocional
+                </div>
+                <div class="card-body">
+                    <img src="{{asset('storage/promo/'.$curso->promo)}}">
+                </div>
+            </section>
+        </aside>
+    </div>
+    <div class="col-lg-6">
+        <aside class="profile-nav alt">
+            <section class="card">
+                <div class="card-header">
+                    Plantilla de Certificado
+                </div>
+                <div class="card-body">
+                    <img src="{{asset('storage/plantilla/'.$curso->plantilla)}}">
+                </div>
+            </section>
+        </aside>
+    </div>
+</div>
+@endsection
+
+@section('label2')
+<!-- modal static -->
+<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title" id="staticModalLabel">Adicionar Coordinadores</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+               </button>
+           </div>
+           <div class="modal-body">
+                <form action="{{route('agregarCoordinadorCurso')}}" method="post" class="form-horizontal">
+                    @csrf
+                    <input type="hidden" name="id_curso" value="{{$curso->id_curso}}">
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="coordinador" class=" form-control-label">Coordinador</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <select name="id_coordinador" class="form-control">
+                                <option value="">Seleccionar</option>
+                                @foreach($lista_coordinador as $value)
+                                <option value="{{$value->id_coordinador}}">{{$value->corto}} {{$value->nombre}} {{$value->paterno}} {{$value->materno}} : {{$value->tipo}}</option>
+                                @endforeach
+                            </select>                            
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-12">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fa fa-check"></i> Agregar Coordinador
+                            </button>
+                        </div>
+                        <div class="col col-md-6">
+                            
+                        </div>
+                    </div>
+                </form>
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- end modal static -->
 @endsection

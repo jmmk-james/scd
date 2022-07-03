@@ -86,9 +86,11 @@ Route::post('searchTipoCurso', 'ControllerTipoCurso@searchTipoCurso')->name('sea
 Route::get('listaCurso/{id_search}/{search}', 'ControllerCurso@listaCurso')->name('listaCurso');
 Route::get('formularioCurso','ControllerCurso@formularioCurso')->name('formularioCurso');
 Route::post('agregarCurso', 'ControllerCurso@agregarCurso')->name('agregarCurso');
+Route::post('agregarCoordiandorCurso', 'ControllerCurso@agregarCoordinadorCurso')->name('agregarCoordinadorCurso');
 Route::get('perfilCurso/{id_curso}','ControllerCurso@perfilCurso')->name('perfilCurso');
-Route::put('updatePersonaCoordinador', 'ControllerCurso@updatePersonaCoordinador')->name('updatePersonaCoordinador');
-Route::put('updateCurso', 'ControllerCurso@updateCurso')->name('updateCurso');
-//Route::put('updateFirmaCoordinador', 'ControllerCurso@updateFirmaCoordinador')->name('updateFirmaCoordinador');
+Route::put('updateCurso','ControllerCurso@updateCurso')->name('updateCurso');
+Route::put('updatePromo','ControllerCurso@updatePromo')->name('updatePromo');
+Route::put('updatePlantilla','ControllerCurso@updatePlantilla')->name('updatePlantilla');
+Route::put('updateTipoCurso', 'ControllerCurso@updateTipoCurso')->name('updateTipoCurso');
 Route::post('searchCurso', 'ControllerCurso@searchCurso')->name('searchCurso');
 

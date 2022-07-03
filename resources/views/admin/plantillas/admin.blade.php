@@ -51,6 +51,7 @@
                     </div>
                 </div>
                 <!-- MAIN CONTENT-->
+                @yield('label2')
             </div>
             <!-- PAGE CONTAINER-->
         </div>
