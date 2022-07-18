@@ -29,7 +29,7 @@
                 <?php $i=$i+1; ?>
                 <tr class="tr-shadow">
                     <td>{{$i}}</td>
-                    <td>{{$value->nombre}}</td>                    
+                    <td>{{$value->carrera}}</td>                    
                     <td>
                         @if($value->estado==1)
                         <span class="badge badge-success">Activo</span>

@@ -20,10 +20,10 @@
                     @csrf
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="ci" class=" form-control-label">Nombre de la Carrera</label>
+                            <label for="carrera" class=" form-control-label">Nombre de la Carrera</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="nombre" placeholder="Nombre de la Carrera" class="form-control" required="true">
+                            <input type="text" name="carrera" placeholder="Nombre de la Carrera" class="form-control" required="true">
                         </div>
                     </div>
                     <div class="row form-group">

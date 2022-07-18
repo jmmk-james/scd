@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
+  <meta name="copyright" content="Jmmk">
   
-  <title>Virtual Folio - Portfolio HTML5 Template</title>
+  <title>SSAST</title>
 
-  <link rel="shortcut icon" href="{{asset('publico/assets/favicon.ico')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{asset('publico/assets/favicon1.ico')}}" type="image/x-icon">
   
   <link rel="stylesheet" type="text/css" href="{{asset('publico/assets/css/themify-icons.css')}}">
   
@@ -76,7 +76,7 @@
     <!-- Navbar -->
     <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
       <div class="container">
-        <a href="" class="navbar-brand">V-Folio</a>
+        <a href="" class="navbar-brand">SSA-STUMSA</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
           <span class="ti-menu"></span>
         </button>
@@ -100,7 +100,7 @@
           </ul>
           <ul class="nav ml-auto">
             <li class="nav-item">
-              <button class="btn btn-fab btn-theme no-shadow">En</button>
+              <button class="btn btn-fab btn-theme no-shadow">Iniciar Secion</button>
             </li>
           </ul>
         </div>

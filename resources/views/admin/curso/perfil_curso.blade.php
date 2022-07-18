@@ -206,7 +206,10 @@
                                         <tbody>
                                             <?php $i=0;?>
                                             @foreach($lista_validez as $value)
-                                            <?php $i=$i+1;?>
+                                            <?php 
+                                                $i=$i+1;
+                                                $nuri=array('id_coordinador'=>$value->id_coordinador,'id_curso'=>$curso->id_curso);
+                                            ?>
                                             <tr class="tr-shadow">
                                                 <td>{{$i}}</td>
                                                 <td>
@@ -214,7 +217,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="table-data-feature">
-                                                        <a href="{{route('perfilCoordinador',$value->id_validez)}}" class="item" data-toggle="tooltip" data-placement="top" title="Eliminar Coordinador">
+                                                        <a href="{{route('eliminarCoordinadorCurso',$nuri)}}" class="item" data-toggle="tooltip" data-placement="top" title="Eliminar Coordinador">
                                                             <i class="zmdi zmdi-delete"></i>
                                                         </a>                            
                                                     </div>
@@ -243,7 +246,35 @@
                     Imagen Promocional
                 </div>
                 <div class="card-body">
-                    <img src="{{asset('storage/promo/'.$curso->promo)}}">
+                    <img src="{{asset('storage/promo/'.$curso->promo)}}" width="200px" height="200px">
+                    <div class="row"><hr></div>
+                    <div class="row">
+                        <form action="{{route('updatePromo')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" name="id_curso" value="{{$curso->id_curso}}">
+                            
+                            <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <label for="promo" class=" form-control-label">Cambiar Promocional</label>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="file" name="promo" class="form-control" accept="image/png,image/jpeg" required="true">
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="fa fa-check"></i> Actualizar
+                                    </button>
+                                </div>
+                                <div class="col col-md-6">
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
         </aside>
@@ -255,7 +286,56 @@
                     Plantilla de Certificado
                 </div>
                 <div class="card-body">
-                    <img src="{{asset('storage/plantilla/'.$curso->plantilla)}}">
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="plantilla" class=" form-control-label">Orientacion :</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="plantilla" class=" form-control-label">{{$curso->orientacion}}</label>
+                        </div>
+                    </div>
+                    <img src="{{asset('storage/plantilla/'.$curso->plantilla)}}" width="100px" height="100px">
+                    <div class="row"><hr></div>
+                    <div class="row">
+                        <form action="{{route('updatePlantilla')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" name="id_curso" value="{{$curso->id_curso}}">
+
+                            <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <label for="orientacion" class=" form-control-label">Orientacion del Certificado</label>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <select name="orientacion" class="form-control" required="true">
+                                        <option value="">Seleccionar Orientacion</option>
+                                        <option value="Vertical">Vertical</option>
+                                        <option value="Horizontal">Horizontal</option>
+                                    </select>                            
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <label for="plantilla" class=" form-control-label">Cambiar Certificado</label>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="file" name="plantilla" class="form-control" accept="image/png,image/jpeg" required="true">
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="fa fa-check"></i> Actualizar
+                                    </button>
+                                </div>
+                                <div class="col col-md-6">
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
         </aside>

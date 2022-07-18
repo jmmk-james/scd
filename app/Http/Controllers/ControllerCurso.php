@@ -16,17 +16,13 @@ class ControllerCurso extends Controller
         {
             $usuario=$_SESSION['usuario'];
             $titulo="Panel SCD";
-            $titulo2="Lista de Coordinadores";
+            $titulo2="Lista de Cursos";
             if($id_search>0)
             {
-                
-                $l=DB::table('view_datos_coordinador')->where('nombre','like','%'.$search.'%')->get();
-                $lp=DB::table('view_datos_coordinador')->where('paterno','like','%'.$search.'%')->get();
-                $lm=DB::table('view_datos_coordinador')->where('materno','like','%'.$search.'%')->get();
-                $lista_coordinador=$l->concat($lp->concat($lm));
+                $lista_curso=App\Curso::where('titulo','like','%'.$search.'%')->get();
             }
             else
-                $lista_coordinador=DB::table('view_datos_coordinador')->get();
+                $lista_curso=App\Curso::all();
                             
             $id_search="1";
             $tipo="Buscar Curso";
@@ -90,6 +86,7 @@ class ControllerCurso extends Controller
             $curso->relevancia=$request->relevancia;
             $curso->promo=$promo;
             $curso->plantilla=$plantilla;
+            $curso->orientacion=$request->orientacion;
             $curso->id_tipocurso=$request->id_tipocurso;
             $curso->save();
 
@@ -118,6 +115,21 @@ class ControllerCurso extends Controller
     	else
         	return redirect('/');
     }
+    public function eliminarCoordinadorCurso($id_coordinador,$id_curso)
+    {
+        session_start();
+    	if(isset($_SESSION['usuario']))
+        {
+            $validez=App\Validez::where('id_curso',$id_curso)->where('id_coordinador',$id_coordinador)->first();
+
+            $validez=App\Validez::findOrFail($validez->id);
+            $validez->delete();
+            return redirect(route('perfilCurso',$id_curso));
+        }
+    	else
+        	return redirect('/');
+    }
+    
     public function updateCurso(Request $request)
     {
         session_start();
@@ -162,6 +174,7 @@ class ControllerCurso extends Controller
 
             $curso= App\Curso::findOrFail($request->id_curso);
             $curso->plantilla=$plantilla;
+            $curso->orientacion=$request->orientacion;
             $curso->save();
             return back()->with('mensaje','La Plantilla fue actualizada correctamente.');
         }

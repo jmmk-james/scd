@@ -66,7 +66,7 @@ class ControllerCarrera extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $carrera=new App\Carrera;
-            $carrera->nombre=ucwords($request->nombre);
+            $carrera->carrera=ucwords($request->carrera);
             $carrera->estado=1;
             $carrera->save();
             $uri=array('id_search'=>0,'search'=>0);
@@ -81,7 +81,7 @@ class ControllerCarrera extends Controller
     	if(isset($_SESSION['usuario']))
         {
             $carrera=App\Carrera::findOrFail($request->id_carrera);
-            $carrera->nombre=ucwords($request->nombre);
+            $carrera->carrera=ucwords($request->carrera);
             $carrera->save();
             $uri=array('id_search'=>0,'search'=>0);
             return redirect(route('listaCarrera',$uri));

@@ -23,6 +23,7 @@ class CreateCursosTable extends Migration
             $table->text('relevancia');
             $table->text('promo');
             $table->text('plantilla');
+            $table->string('orientacion',10);
             $table->integer('id_tipocurso');
             $table->timestamps();
         });

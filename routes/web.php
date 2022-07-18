@@ -87,6 +87,7 @@ Route::get('listaCurso/{id_search}/{search}', 'ControllerCurso@listaCurso')->nam
 Route::get('formularioCurso','ControllerCurso@formularioCurso')->name('formularioCurso');
 Route::post('agregarCurso', 'ControllerCurso@agregarCurso')->name('agregarCurso');
 Route::post('agregarCoordiandorCurso', 'ControllerCurso@agregarCoordinadorCurso')->name('agregarCoordinadorCurso');
+Route::get('eliminarCoordinadorCurso/{id_coordinador}/{id_curso}','ControllerCurso@eliminarCoordinadorCurso')->name('eliminarCoordinadorCurso');
 Route::get('perfilCurso/{id_curso}','ControllerCurso@perfilCurso')->name('perfilCurso');
 Route::put('updateCurso','ControllerCurso@updateCurso')->name('updateCurso');
 Route::put('updatePromo','ControllerCurso@updatePromo')->name('updatePromo');

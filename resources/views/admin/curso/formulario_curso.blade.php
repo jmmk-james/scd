@@ -93,6 +93,19 @@
                             <input type="file" name="plantilla" class="form-control" accept="image/jpeg" required="true">
                         </div>
                     </div>
+                    
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="orientacion" class=" form-control-label">Orientacion del Certificado</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <select name="orientacion" class="form-control" required="true">
+                                <option value="">Seleccionar Orientacion</option>
+                                <option value="Vertical">Vertical</option>
+                                <option value="Horizontal">Horizontal</option>
+                            </select>                            
+                        </div>
+                    </div>
 
                     <div class="row form-group">
                         <div class="col-12 col-md-12">
@@ -107,7 +120,7 @@
                             </button>
                         </div>
                         <div class="col col-md-6">
-                            <a href="{{route('listaTipo',$uri)}}" class="btn btn-danger btn-block">
+                            <a href="{{route('listaCurso',$uri)}}" class="btn btn-danger btn-block">
                                 <i class="fa fa-close"></i> Cancelar
                             </a>
                         </div>
