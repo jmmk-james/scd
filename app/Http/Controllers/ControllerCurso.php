@@ -87,6 +87,9 @@ class ControllerCurso extends Controller
             $curso->promo=$promo;
             $curso->plantilla=$plantilla;
             $curso->orientacion=$request->orientacion;
+            $curso->estado="ACTIVO";
+            $curso->cupo=$request->cupo;
+            $curso->total=0;
             $curso->id_tipocurso=$request->id_tipocurso;
             $curso->save();
 
@@ -141,6 +144,8 @@ class ControllerCurso extends Controller
             $curso->carga=$request->carga;
             $curso->fecha=$request->fecha;
             $curso->relevancia=$request->relevancia;
+            $curso->estado=$request->estado;
+            $curso->cupo=$request->cupo;
             $curso->save();
 
             return back()->with('mensaje','Los datos del Curso fueron actualizados correctamente.');

@@ -30,7 +30,20 @@
                         <div class="col col-md-6">Tipo :</div><div class="col col-md-6">{{$curso->tipo}}</div>
                         <div class="col col-md-6">Codigo :</div><div class="col col-md-6">{{$curso->code}}</div>
                         <div class="col col-md-6">C. Horaria :</div><div class="col col-md-6">{{$curso->carga}}</div>
+                        <div class="col col-md-6">Cupo :</div><div class="col col-md-6">{{$curso->cupo}}</div>
+                        <div class="col col-md-6">Inscritos :</div><div class="col col-md-6">{{$curso->total}}</div>
                         <div class="col col-md-6">Fecha :</div><div class="col col-md-6">{{$curso->fecha}}</div>
+                        <div class="col col-md-6">Estado :</div><div class="col col-md-6">
+                            @if ($curso->estado=="ACTIVO")
+                            <div class="alert alert-success" role="alert">
+                                {{$curso->estado}}
+                            </div>
+                            @else
+                            <div class="alert alert-danger" role="alert">
+                                {{$curso->estado}}
+                            </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="row">
                         <hr>
@@ -85,8 +98,11 @@
                                 <div class="col col-md-4">Titulo :</div><div class="col col-md-8">{{$curso->titulo}}</div>
                                 <div class="col col-md-4">Detalle :</div><div class="col col-md-8">{{$curso->detalle}}</div>
                                 <div class="col col-md-4">Carga Horaria :</div><div class="col col-md-8">{{$curso->carga}}</div>
+                                <div class="col col-md-4">Cupo :</div><div class="col col-md-8">{{$curso->cupo}}</div>
+                                <div class="col col-md-4">Inscritos :</div><div class="col col-md-8">{{$curso->total}}</div>
                                 <div class="col col-md-4">Fecha :</div><div class="col col-md-8">{{$curso->fecha}}</div>
                                 <div class="col col-md-4">Tipo :</div><div class="col col-md-8">{{$curso->tipo}}</div>
+                                <div class="col col-md-4">Estado :</div><div class="col col-md-8">{{$curso->estado}}</div>
                                 <div class="col col-md-4">Relevancia :</div><div class="col col-md-8">{{$curso->relevancia}}</div>
                             </div>
                         </div>
@@ -118,9 +134,19 @@
                                         <label for="carga" class=" form-control-label">Carga Horaria</label>
                                     </div>
                                     <div class="col-12 col-md-8">
-                                        <input type="text" name="carga" class="form-control" placeholder="Carga Horaria" value="{{$curso->carga}}" required="true">
+                                        <input type="number" name="carga" class="form-control" placeholder="Carga Horaria" value="{{$curso->carga}}" required="true">
                                     </div>
                                 </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-4">
+                                        <label for="cupo" class=" form-control-label">Cupo</label>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <input type="number" name="cupo" class="form-control" placeholder="Cupo de Inscritos" value="{{$curso->cupo}}" required="true">
+                                    </div>
+                                </div>
+
                                 <div class="row form-group">
                                     <div class="col col-md-4">
                                         <label for="fecha" class=" form-control-label">Fecha</label>
@@ -136,6 +162,19 @@
                                     </div>
                                     <div class="col-12 col-md-8">
                                         <textarea name="relevancia" class="form-control" placeholder="Relevancia"  required="true">{{$curso->relevancia}}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-4">
+                                        <label for="estado" class="form-control-label">Estado</label>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <select name="estado" class="form-control" required="true">
+                                            <option value="{{$curso->estado}}">Seleccionar Estado</option>
+                                            <option value="ACTIVO">ACTIVO</option>
+                                            <option value="CERRADO">CERRADO</option>
+                                        </select>
                                     </div>
                                 </div>
 

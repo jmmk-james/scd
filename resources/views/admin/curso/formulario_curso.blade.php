@@ -55,9 +55,19 @@
                             <label for="carga" class=" form-control-label">Carga Horaria</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" name="carga" class="form-control" placeholder="Carga Horaria" value="0" required="true">
+                            <input type="number" name="carga" class="form-control" placeholder="Carga Horaria" value="0" required="true">
                         </div>
                     </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="carga" class=" form-control-label">Cupo</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="number" name="cupo" class="form-control" placeholder="Cupo de Inscritos" value="1000" required="true">
+                        </div>
+                    </div>
+
                     <div class="row form-group">
                         <div class="col col-md-6">
                             <label for="fecha" class=" form-control-label">Fecha</label>

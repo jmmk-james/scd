@@ -95,3 +95,6 @@ Route::put('updatePlantilla','ControllerCurso@updatePlantilla')->name('updatePla
 Route::put('updateTipoCurso', 'ControllerCurso@updateTipoCurso')->name('updateTipoCurso');
 Route::post('searchCurso', 'ControllerCurso@searchCurso')->name('searchCurso');
 
+#----------------------- Modulo Portafolio
+Route::get('portafolio','ControllerPortafolio@portafolio')->name('portafolio');
+
