@@ -1,30 +1,41 @@
 @extends('publico.plantilla')
 
 @section('label1')
-<!-- Blog -->
-<div class="vg-page page-blog">
-    <div class="container">
-        <h1 class="text-center fw-normal wow fadeInUp">Talleres, Cursos, Seminarios y Otros.</h1>
-        <div class="row post-grid">
-            @foreach($curso as $value)
-            <div class="col-md-6 col-lg-4 wow fadeInUp">
-                <div class="card">
-                    <div class="img-place">
-                        <img src="{{asset('storage/promo/'.$value->promo)}}" alt="">
-                    </div>
-                    <div class="caption">
-                        <a href="javascript:void(0)" class="post-category">Tipo : {{$value->tipo}}</a>
-                        <a href="#" class="post-title">{{$value->titulo}}</a>
-                        <span class="post-date"><span class="sr-only">Fecha </span>Fecha:  {{$value->fecha}}</span>
-                        <span class="post-date"><span class="sr-only">Fecha </span>Cupo : {{$value->cupo}}</span>
-                    </div>
-                    <div class="col col-12 text-center">
-                        <a href="#" class="btn btn-theme-outline" >Inscribirme</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
+
+<div class="container">
+    <div class="row">
+        <div class="heading-section col-md-12 text-center">
+            <h2>S.C.D.</h2>
         </div>
     </div>
-  </div> <!-- End blog -->
+    <div class="row">
+      <div class="heading-section col-md-12 text-center">
+        <h2>Talleres, Cursos, Seminarios y Otros.</h2>
+        <p>Certificados Digitales.</p>
+      </div> <!-- /.heading-section -->
+    </div> <!-- /.row -->
+    <div class="row">
+      @foreach($curso as $value)
+      <div class="portfolio-item col-md-3 col-sm-6">
+        <div class="portfolio-thumb">
+            <img src="{{asset('storage/promo/'.$value->promo)}}" alt="">
+            <div class="portfolio-overlay">
+                <h3>{{$value->titulo}}</h3>
+                <p>Fecha : {{$value->fecha}}</p>
+            </div> <!-- /.portfolio-overlay -->
+        </div> <!-- /.portfolio-thumb --> 
+        <div class="contact-form">
+            <div class="heading-section col-md-12">
+                <p>Tipo : {{$value->tipo}}</p>
+                <p>Cupo : {{$value->cupo}}</p>
+                <p>Fecha : {{$value->fecha}}</p>
+                <a class="btn btn-danger btn-block">Inscribirme</a>
+            </div>
+            <br>
+            
+        </div>
+      </div> <!-- /.portfolio-item -->
+      @endforeach
+    </div>
+</div>
 @endsection

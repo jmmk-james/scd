@@ -1,36 +1,39 @@
-<!-- Navbar -->
-<div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
-    <div class="container">
-      <a href="" class="navbar-brand">SCD</a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
-        <span class="ti-menu"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="main-navbar">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a href="#home" class="nav-link" data-animate="scrolling">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('portafolio')}}" class="nav-link" data-animate="scrolling">Portafolio</a>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link" data-animate="scrolling">Hacerca de SCD</a>
-          </li>
-          <li class="nav-item">
-            <a href="#blog" class="nav-link" data-animate="scrolling">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link" data-animate="scrolling">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('sesion')}}" class="nav-link" data-animate="scrolling">Ingresar</a>
-          </li>
-        </ul>
-        <ul class="nav ml-auto">
-          <li class="nav-item">
-            <button class="btn btn-fab btn-theme no-shadow">FHCE</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div> <!-- End Navbar -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul class="social-icons">
+                <li><a href="#" class="fa fa-facebook"></a></li>
+                <li><a href="#" class="fa fa-twitter"></a></li>
+                <li><a href="#" class="fa fa-dribbble"></a></li>
+                <li><a href="#" class="fa fa-linkedin"></a></li>
+            </ul>
+        </div> <!-- /.col-md-12 -->
+    </div> <!-- /.row -->
+</div> <!-- /.container -->
+
+<div class="main-header">
+  <div class="container">
+      <div id="menu-wrapper">
+          <div class="row">
+              <div class="logo-wrapper col-md-2 col-sm-2">
+                  <h1>
+                      <a href="{{route('index')}}">SCD</a>
+                  </h1>
+              </div> <!-- /.logo-wrapper -->
+              <div class="col-md-10 col-sm-10 main-menu text-right">
+                  <div class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></div>
+                  <ul class="menu-first">
+                      <li><a href="{{route('index')}}" class="external" rel="nofollow">Inicio</a></li>
+                      <li><a href="{{route('portafolio')}}" class="external" rel="nofollow">Portafolio</a></li>
+                      <li><a href="#portfolio">Portfolio</a></li>
+                      <li><a href="#our-team">Team</a></li>
+                      <li><a href="https://fb.com/templatemo" class="external" rel="nofollow">External</a></li> 
+                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="{{route('sesion')}}" class="external" rel="nofollow">Ingresar</a></li>                                 
+                  </ul>                                    
+              </div> <!-- /.main-menu -->
+          </div> <!-- /.row -->
+      </div> <!-- /#menu-wrapper -->                        
+  </div> <!-- /.container -->
+</div> <!-- /.main-header -->
+  
