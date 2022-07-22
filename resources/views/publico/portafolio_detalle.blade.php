@@ -29,7 +29,7 @@
                 <p>Tipo : {{$value->tipo}}</p>
                 <p>Cupo : {{$value->cupo}}</p>
                 <p>Fecha : {{$value->fecha}}</p>
-                <a class="btn btn-danger btn-block">Inscribirme</a>
+                <a href="{{route('formulario',$value->id_curso)}}" class="btn btn-danger btn-block">Inscribirme</a>
             </div>
             <br>
             

@@ -45,6 +45,16 @@ Route::get('editarCarrera/{id_carrera}','ControllerCarrera@editarCarrera')->name
 Route::put('updateCarrera', 'ControllerCarrera@updateCarrera')->name('updateCarrera');
 Route::post('searchCarrera', 'ControllerCarrera@searchCarrera')->name('searchCarrera');
 
+
+#---------------------- Modulo Universidads 
+Route::get('listaUniversidad/{id_search}/{search}', 'ControllerUniversidad@listaUniversidad')->name('listaUniversidad');
+Route::get('formularioUniversidad','ControllerUniversidad@formularioUniversidad')->name('formularioUniversidad');
+Route::post('agregarUniversidad', 'ControllerUniversidad@agregarUniversidad')->name('agregarUniversidad');
+Route::get('eliminarCarrea/{id_universidad}', 'ControllerUniversidad@eliminarUniversidad')->name('eliminarUniversidad');
+Route::get('editarUniversidad/{id_universidad}','ControllerUniversidad@editarUniversidad')->name('editarUniversidad');
+Route::put('updateUniversidad', 'ControllerUniversidad@updateUniversidad')->name('updateUniversidad');
+Route::post('searchUniversidad', 'ControllerUniversidad@searchUniversidad')->name('searchUniversidad');
+
 #---------------------- Modulo Tipo
 Route::get('listaTipo/{id_search}/{search}', 'ControllerTipo@listaTipo')->name('listaTipo');
 Route::get('formularioTipo','ControllerTipo@formularioTipo')->name('formularioTipo');
@@ -97,4 +107,8 @@ Route::post('searchCurso', 'ControllerCurso@searchCurso')->name('searchCurso');
 
 #----------------------- Modulo Portafolio
 Route::get('portafolio','ControllerPortafolio@portafolio')->name('portafolio');
+
+#----------------------- Modulo Formulario
+Route::get('formulario/{id_curso}','ControllerFormulario@formulario')->name('formulario');
+Route::post('formularioEvaluacion','ControllerFormulario@formularioEvaluacion')->name('formularioEvaluacion');
 

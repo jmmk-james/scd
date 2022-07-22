@@ -251,7 +251,7 @@ hr {
   width: 100%;
   margin: 0 auto;
   z-index: 1000;
-  top: 94px;
+  top: 0px;
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
@@ -436,7 +436,7 @@ hr {
     overflow: auto;
     width: 100%;  
     display: none;  
-    /*opacity: 1;  */  
+    opacity: 0.8;    
     /*height: 0;  */  
     /*background: rgba(50, 50, 50, 0.88);*/
     /*transition: opacity 1s, height 0 1s; */
@@ -760,6 +760,11 @@ hr {
   width: 100%;
   margin-bottom: 15px;
 }
+.contact-form select {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 .contact-form textarea {
   width: 100%;
   max-width: 100%;

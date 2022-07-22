@@ -6,6 +6,7 @@
     	  <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{asset('publico/assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('publico/assets/css/formulario.css')}}">
         <link rel="stylesheet" href="{{asset('publico/assets/css/font-awesome.css')}}">
         <link rel="stylesheet" href="{{asset('publico/assets/css/animate.css')}}">
         <link rel="stylesheet" href="{{asset('publico/assets/css/templatemo_misc.css')}}">
@@ -25,7 +26,8 @@
         <div id="footer">
             @include('publico.pie')
         </div> <!-- /#footer -->
-        
+            
+        <script src="{{asset('publico/assets/js/funciones.js')}}"></script>
         <script src="{{asset('publico/assets/js/vendor/jquery-1.11.0.min.js')}}"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
         <script src="{{asset('publico/assets/js/bootstrap.js')}}"></script>
