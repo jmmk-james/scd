@@ -16,11 +16,11 @@ class CreateEstudiantesTable extends Migration
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id();
             $table->integer('id_persona');
-            $table->integer('id_profecion');
+            $table->integer('ru');
+            $table->string('profesion',50);
             $table->integer('id_grado');
             $table->integer('id_carrera');
             $table->integer('id_universidad');
-            $table->text('otro_profecion');
             $table->text('otro_carrera');
             $table->text('otro_universidad');
             $table->timestamps();

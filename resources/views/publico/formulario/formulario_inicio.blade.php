@@ -26,11 +26,11 @@
               <input type="text" name="id_curso" value="{{$curso->id}}">
               <div class="heading-section col-md-12">
                 <p>Seleccionar Profesión : </p>
-                <select  name="profecion" required="true">
+                <select  name="profesion" required="true">
                   <option value="">Seleccionar Profesión</option>
-                  <option value="ESTUDIANTE">ESTUDIANTE UNIVERSITARIO</option>
-                  <option value="PROFECIONAL">PROFECIONAL</option>
-                  <option value="OTROS">OTROS</option>
+                  @foreach($profesion as $value)
+                  <option value="{{$value->profecion}}">{{$value->profecion}}</option>
+                  @endforeach
                 </select>
                 <input type="submit" class="mainBtn" value="Siguiente">
               </div>                

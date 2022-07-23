@@ -27,6 +27,7 @@
                         <li><a href="{{route('listaTipo',$uri)}}">Tipos y Cargos</a></li>
                         <li><a href="{{route('listaCarrera',$uri)}}">Carreras</a></li>
                         <li><a href="{{route('listaUniversidad',$uri)}}">Universidades</a></li>
+                        <li><a href="{{route('listaProfesion',$uri)}}">Profesiones</a></li>
                         <li><a href="{{route('listaTipoCurso',$uri)}}">Tipos de Cursos</a></li>
                     </ul>
                 

@@ -21,17 +21,18 @@
       <div class="col-md-4 col-sm-6">
         <div class="row">
           <div class="contact-form">
-            <form action="" method="post">
+            <form action="{{route('formularioBuscar')}}" method="post">
+              @csrf
               <input type="text" name="id_curso" value="{{$curso->id}}">
-              <input type="text" name="profecion" value="{{$datos['profecion']}}">
+              <input type="text" name="profesion" value="{{$datos['profesion']}}">
               <div class="heading-section col-md-12">
                 <p>Seleccionar Universidad : </p>
                 <select  name="universidad" required="true" id="universidad" onchange="selecunversidad()">
                   <option value="">Seleccionar Universidad</option>
-                  <option value="-1">Ninguna</option>
                   @foreach($universidad as $value)
                   <option value="{{$value->id}}">{{$value->universidad}}</option>
                   @endforeach
+                  <option value="-1">Ninguna</option>
                 </select>
                 <div id="divotro" style="display: none;">
                   <input type="text" name="otro" value="0" id="otra_universidad" placeholder="Nombre de la Universidad">
