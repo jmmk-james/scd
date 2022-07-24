@@ -126,5 +126,10 @@ Route::get('formularioEvaluacionGet/{id_curso}/{profesion}/{id_universidad}/{otr
 Route::post('formularioBuscar','ControllerFormulario@formularioBuscar')->name('formularioBuscar');
 Route::get('formularioBuscarGet/{id_curso}/{profesion}/{id_universidad}/{otrouniveridad}','ControllerFormulario@formularioBuscarGet')->name('formularioBuscarGet');
 Route::post('formularioFormulario','ControllerFormulario@formularioFormulario')->name('formularioFormulario');
-Route::post('formularioConfirmar','ControllerFormulario@formularioConfirmar')->name('formularioConfirmar');
+Route::get('formularioFormularioGet/{id_curso}/{profesion}/{id_universidad}/{otrouniveridad}/{ci}/{ru}','ControllerFormulario@formularioFormularioGet')->name('formularioFormularioGet');
 
+Route::post('formularioConfirmar','ControllerFormulario@formularioConfirmar')->name('formularioConfirmar');
+Route::get('formularioConfirmarGet/{id_persona}/{id_estudiante}/{id_curso}/{profesion}/{id_universidad}/{otrouniveridad}/{ci}/{ru}/{nombre}/{paterno}/{materno}/{correo}/{celular}/{id_grado}/{id_carrera}/{otra_carrera}','ControllerFormulario@formularioConfirmarGet')->name('formularioConfirmarGet');
+
+Route::post('agregarEstudiante','ControllerFormulario@agregarEstudiante')->name('agregarEstudiante');
+Route::get('formularioResult/{id_curso}/{id_persona}/{id_estudiante}/{inscrito}','ControllerFormulario@formularioResult')->name('formularioResult');

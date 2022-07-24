@@ -27,7 +27,7 @@
         <div class="contact-form">
             <div class="heading-section col-md-12">
                 <p>Tipo : {{$value->tipo}}</p>
-                <p>Cupo : {{$value->cupo}}</p>
+                <p>Cupo : {{$value->cupo-$value->total}}</p>
                 <p>Fecha : {{$value->fecha}}</p>
                 <a href="{{route('formulario',$value->id_curso)}}" class="btn btn-danger btn-block">Inscribirme</a>
             </div>

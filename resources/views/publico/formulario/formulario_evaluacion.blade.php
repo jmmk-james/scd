@@ -23,8 +23,8 @@
           <div class="contact-form">
             <form action="{{route('formularioBuscar')}}" method="post">
               @csrf
-              <input type="text" name="id_curso" value="{{$curso->id}}">
-              <input type="text" name="profesion" value="{{$datos['profesion']}}">
+              <input type="hidden" name="id_curso" value="{{$curso->id}}">
+              <input type="hidden" name="profesion" value="{{$datos['profesion']}}">
               <div class="heading-section col-md-12">
                 <p>Seleccionar Universidad : </p>
                 <select  name="universidad" required="true" id="universidad" onchange="selecunversidad()">

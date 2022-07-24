@@ -23,7 +23,7 @@
           <div class="contact-form">
             <form action="{{route('formularioEvaluacion')}}" method="post">
               @csrf
-              <input type="text" name="id_curso" value="{{$curso->id}}">
+              <input type="hidden" name="id_curso" value="{{$curso->id}}">
               <div class="heading-section col-md-12">
                 <p>Seleccionar Profesión : </p>
                 <select  name="profesion" required="true">

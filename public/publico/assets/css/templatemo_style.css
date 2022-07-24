@@ -790,6 +790,11 @@ hr {
   margin-top: 130px;
 }
 
+.verifica{
+  font-size: 15px;
+  font-style: normal;
+}
+
 /*
 body, p, div, h1, h2, h3, h4, h5, h6 {
 	font-family: "Open Sans", Arial, Verdana, Geneva, sans-serif;

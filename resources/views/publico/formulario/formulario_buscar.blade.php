@@ -28,10 +28,10 @@
             @endif  
             <form action="{{route('formularioFormulario')}}" method="post">
                 @csrf
-                <input type="text" name="id_curso" value="{{$curso->id}}">
-                <input type="text" name="profesion" value="{{$datos['profesion']}}">
-                <input type="text" name="id_universidad" value="{{$datos['id_universidad']}}">
-                <input type="text" name="otrouniveridad" value="{{$datos['otrouniveridad']}}">
+                <input type="hidden" name="id_curso" value="{{$curso->id}}">
+                <input type="hidden" name="profesion" value="{{$datos['profesion']}}">
+                <input type="hidden" name="id_universidad" value="{{$datos['id_universidad']}}">
+                <input type="hidden" name="otrouniveridad" value="{{$datos['otrouniveridad']}}">
                 <div class="heading-section col-md-12">
                     @if($datos['id_universidad']==1)
                     <p>Registro Universitario : </p>
