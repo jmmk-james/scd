@@ -15,10 +15,10 @@
       </div> <!-- /.heading-section -->
     </div> <!-- /.row -->
     <div class="row">
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-3 col-sm-6">
       </div>
 
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-6 col-sm-6">
         <div class="row">
           <div class="contact-form">
             @if(session('mensaje_error'))
@@ -27,9 +27,7 @@
                 </div>
             @endif  
             @if($inscrito=="si")
-            <div class="alert alert-success" role="alert">
-                Inscripcion Correcta
-            </div>
+            @include('publico.formulario.inscrito')
             @else
             <div class="alert alert-danger" role="alert">
                 Cupos Llenos
@@ -38,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-3 col-sm-6">
       </div>
     </div>
 </div>

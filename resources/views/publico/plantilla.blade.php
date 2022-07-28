@@ -26,7 +26,14 @@
         <div id="footer">
             @include('publico.pie')
         </div> <!-- /#footer -->
-            
+        
+        <script type="text/javascript">
+            window.history.forward();
+            function noBack()
+            {
+                window.history.forward();
+            }
+        </script>
         <script src="{{asset('publico/assets/js/funciones.js')}}"></script>
         <script src="{{asset('publico/assets/js/vendor/jquery-1.11.0.min.js')}}"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>

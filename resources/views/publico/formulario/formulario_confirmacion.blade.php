@@ -40,6 +40,9 @@
                 <div class="col-md-6 col-sm-6">
                     
                 </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="alert alert-success" role="alert">Curso : {{$curso->titulo}}</div>
+                </div>
             </div>
 
           <div class="contact-form">

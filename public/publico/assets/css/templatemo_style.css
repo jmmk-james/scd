@@ -795,6 +795,23 @@ hr {
   font-style: normal;
 }
 
+.iconos{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 48px;
+  text-align: center;
+}
+.iconos a{
+  font-size: 23px;
+}
+.iconos i{
+  margin-left: 50px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 40px;
+}
+
 /*
 body, p, div, h1, h2, h3, h4, h5, h6 {
 	font-family: "Open Sans", Arial, Verdana, Geneva, sans-serif;

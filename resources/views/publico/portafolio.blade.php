@@ -17,7 +17,7 @@
       </div> <!-- /.portfolio-thumb --> 
       <div class="contact-form">
         <br>
-        <a href="#" class="btn btn-danger btn-block">Inscribirme</a>
+        <a href="{{route('formulario',$value->id)}}" class="btn btn-danger btn-block">Inscribirme</a>
       </div>
     </div> <!-- /.portfolio-item -->
     @endforeach

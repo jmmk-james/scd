@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App;
 
 class ControllerFormulario extends Controller
@@ -140,7 +141,7 @@ class ControllerFormulario extends Controller
 
     public function agregarEstudiante(Request $request)
     {
-        $datos=["id_curso"=>$request->id_curso,"id_persona"=>$request->id_persona,"id_estudiante"=>$request->id_estudiante,"inscrito"=>"no"];
+        $datos=["id_curso"=>$request->id_curso,"id_persona"=>$request->id_persona,"id_estudiante"=>$request->id_estudiante,"inscrito"=>"no","id_inscrito"=>0];
         $curso=App\Curso::findOrFail($request->id_curso);
         $valor=$curso->cupo-$curso->total;
         if($request->id_persona==0)
@@ -194,14 +195,18 @@ class ControllerFormulario extends Controller
 
             $curso->total=$curso->total+1;
             $curso->save();
+
+            $inscrito=App\Inscrito::where('id_curso',$request->id_curso)->where('id_estudiante',$id_estudiante)->first();
+            $datos["id_inscrito"]=$inscrito->id;
         }
         return redirect(route('formularioResult',$datos));
     }
 
-    public function formularioResult($id_curso,$id_persona,$id_estudiante,$inscrito)
+    public function formularioResult($id_curso,$id_persona,$id_estudiante,$inscrito,$id_inscrito)
     {
-        $curso=App\Curso::findOrFail($id_curso);
-        return view('publico.formulario.formulario_result',compact('curso','inscrito'));
+        $pdf=["id_curso"=>$id_curso,"id_persona"=>$id_persona,"id_estudiante"=>$id_estudiante,"id_inscrito"=>$id_inscrito];
+        $curso=DB::table('view_datos_inscripcion')->where('id_curso',$id_curso)->where('id_estudiante',$id_estudiante)->where('id_persona',$id_persona)->where('id_inscrito',$id_inscrito)->first();
+        return view('publico.formulario.formulario_result',compact('curso','inscrito','pdf'));
     }
 
 }
