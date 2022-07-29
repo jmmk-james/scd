@@ -38,6 +38,7 @@
                   <input type="text" name="otro" value="0" id="otra_universidad" placeholder="Nombre de la Universidad">
                 </div>
                 <input type="submit" class="mainBtn" value="Siguiente">
+                <a href="{{route('portafolio')}}" class="btn btn-warning btn-block">CANCELAR</a>
               </div>                
             </form>
           </div>

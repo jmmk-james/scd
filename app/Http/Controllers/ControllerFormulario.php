@@ -58,7 +58,7 @@ class ControllerFormulario extends Controller
         {
             if($request->ru==$request->ru2)
             {
-                $datos['ru']=$request->ru;
+                $datos["ru"]=$request->ru;
                 return redirect(route('formularioFormularioGet',$datos));
             }
             else
@@ -66,9 +66,13 @@ class ControllerFormulario extends Controller
         }
         else
         {
-            if($request->ci==$request->ci2)
+            $ci=strtolower($request->ci);
+            $ci2=strtolower($request->ci2);
+            $ci=str_replace(' ','',$ci);
+            $ci2=str_replace(' ','',$ci2);
+            if($ci==$ci2)
             {
-                $datos['ci']=$request->ci;
+                $datos["ci"]=$ci;
                 return redirect(route('formularioFormularioGet',$datos));
             }
             else

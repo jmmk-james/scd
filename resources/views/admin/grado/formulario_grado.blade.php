@@ -2,15 +2,15 @@
 
 @section('label1')
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-3">
         
     </div>
-    <div class="col-lg-8">
+    <div class="col-6">
         <div class="card">
             <div class="card-header">
                 <h4>{{$titulo2}}</h4>
             </div>
-            <div class="card-body card-block">
+            <div class="card-body text-center">
                 @if(session('mensaje'))
                     <div class="alert alert-danger" role="alert">
                         {{session('mensaje')}}
@@ -18,48 +18,40 @@
                 @endif
                 <form action="{{route('agregarGrado')}}" method="post" class="">
                     @csrf
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="grado" class=" form-control-label">Grado Academico</label>
-                        </div>
-                        <div class="col-12 col-md-6">
+                    <div class="mb-3 row">
+                        <label for="grado" class="col-4 form-control-label">Grado Academico</label>
+                        <div class="col-8">
                             <input type="text" name="nombre" placeholder="Grado Academico" class="form-control" required="true">
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="corto" class=" form-control-label">Grado Abreviado</label>
-                        </div>
-                        <div class="col-12 col-md-6">
+
+                    <div class="mb-3 row">
+                        <label for="corto" class="col-4 form-control-label">Grado Abreviado</label>
+                        <div class="col-8">
                             <input type="text" name="corto" placeholder="Grado Abreviado" class="form-control" required="true">
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col-12 col-md-12">
-                            <hr>
-                        </div>
+                    <div class="mb-3 row">
+                        <hr>
                     </div>
 
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <button type="submit" class="btn btn-success btn-block">
-                                <i class="fa fa-check"></i> Registrar
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success botn-block">
+                                <i class="fa fa-save"></i> Registrar
                             </button>
                         </div>
-                        <div class="col col-md-6">
-                            <a href="{{route('listaGrado',$uri)}}" class="btn btn-danger btn-block">
-                                <i class="fa fa-close"></i> Cancelar
+                        <div class="col-6">
+                            <a href="{{route('listaGrado',$uri)}}" class="btn btn-danger botn-block">
+                                <i class="fa fa-times"></i> Cancelar
                             </a>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="card-footer">
-                El grado académico corresponde al título perteneciente al Coordinador, dicho título aparecerá en la parte inferior de los certificados.
-            </div>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-3">
         
     </div>
 </div>

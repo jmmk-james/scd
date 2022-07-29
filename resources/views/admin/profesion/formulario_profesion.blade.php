@@ -2,15 +2,15 @@
 
 @section('label1')
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-3">
         
     </div>
-    <div class="col-lg-8">
+    <div class="col-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header text-center">
                 <h4>{{$titulo2}}</h4>
             </div>
-            <div class="card-body card-block">
+            <div class="card-body">
                 @if(session('mensaje'))
                     <div class="alert alert-danger" role="alert">
                         {{session('mensaje')}}
@@ -18,40 +18,33 @@
                 @endif
                 <form action="{{route('agregarProfesion')}}" method="post" class="">
                     @csrf
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="profesion" class=" form-control-label">Nombre de la Profesion</label>
-                        </div>
-                        <div class="col-12 col-md-6">
+                    <div class="mb-3 row">
+                        <label for="profesion" class="col-4 form-control-label">Nombre de la Profesion</label>
+                        <div class="col-8">
                             <input type="text" name="profesion" placeholder="Nombre de la Profesion" class="form-control" required="true">
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col-12 col-md-12">
-                            <hr>
-                        </div>
+                    <div class="mb-3 row">
+                        <hr>
                     </div>
 
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <button type="submit" class="btn btn-success btn-block">
-                                <i class="fa fa-check"></i> Registrar
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success botn-block">
+                                <i class="fa fa-save"></i> Registrar
                             </button>
                         </div>
-                        <div class="col col-md-6">
-                            <a href="{{route('listaProfesion',$uri)}}" class="btn btn-danger btn-block">
-                                <i class="fa fa-close"></i> Cancelar
+                        <div class="col-6">
+                            <a href="{{route('listaProfesion',$uri)}}" class="btn btn-danger botn-block">
+                                <i class="fa fa-times"></i> Cancelar
                             </a>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="card-footer">
-                La Carrera Registrada es automaticamente Activada para la seleccion del mismo.
-            </div>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-3">
         
     </div>
 </div>

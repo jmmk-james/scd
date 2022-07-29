@@ -74,6 +74,7 @@
                 
                 <div class="heading-section col-md-12">
                     <input type="submit" class="btn btn-success btn-block" value="Inscribirme">
+                    <a href="{{route('portafolio')}}" class="btn btn-warning btn-block">CANCELAR</a>
                 </div>                
             </form>
           </div>

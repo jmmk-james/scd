@@ -45,6 +45,7 @@
                     <input type="text" name="ci2" placeholder="Cedula de Identidad Ejemplo : 8475857lp" minlength="6" required="true">
                     @endif
                     <input type="submit" class="mainBtn" value="Siguiente">
+                    <a href="{{route('portafolio')}}" class="btn btn-warning btn-block">CANCELAR</a>
                 </div>                
             </form>
           </div>

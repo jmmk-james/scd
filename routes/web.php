@@ -126,6 +126,7 @@ Route::get('formularioEvaluacionGet/{id_curso}/{profesion}/{id_universidad}/{otr
 Route::post('formularioBuscar','ControllerFormulario@formularioBuscar')->name('formularioBuscar');
 Route::get('formularioBuscarGet/{id_curso}/{profesion}/{id_universidad}/{otrouniveridad}','ControllerFormulario@formularioBuscarGet')->name('formularioBuscarGet');
 Route::post('formularioFormulario','ControllerFormulario@formularioFormulario')->name('formularioFormulario');
+
 Route::get('formularioFormularioGet/{id_curso}/{profesion}/{id_universidad}/{otrouniveridad}/{ci}/{ru}','ControllerFormulario@formularioFormularioGet')->name('formularioFormularioGet');
 
 Route::post('formularioConfirmar','ControllerFormulario@formularioConfirmar')->name('formularioConfirmar');

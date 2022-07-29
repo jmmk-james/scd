@@ -3,149 +3,163 @@
 @section('label1')
 
 <div class="row">
-    <div class="col-lg-4">
-        <aside class="profile-nav alt">
-            <section class="card">
-                <div class="card-header user-header alt bg-dark">
-                    <div class="media">
-                        <a href="#">
-                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{asset('admin/assets/images/icon/avatar-01.png')}}">
-                        </a>
-                        <div class="media-body">
-                            <h2 class="text-light display-6">{{$datos->nombre}} {{$datos->paterno}} {{$datos->materno}}</h2>
-                            
-                        </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <p>{{$datos->nombre}} {{$datos->paterno}} {{$datos->materno}}</p>
+                @if(session('mensaje'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('mensaje')}}
                     </div>
-                    @if(session('mensaje'))
-                        <div class="alert alert-success" role="alert">
-                            {{session('mensaje')}}
-                        </div>
-                    @endif
-                    @if(session('mensaje_error'))
-                        <div class="alert alert-danger" role="alert">
-                            {{session('mensaje_error')}}
-                        </div>
-                    @endif
+                @endif
+                @if(session('mensaje_error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('mensaje_error')}}
+                    </div>
+                @endif
+            </div>
+            <div class="card-body">
+                <div class="mb-3 row">
+                    <label for="nombre" class="col-4 form-control-label">Nombre :</label>
+                    <label for="nombre" class="col-8 form-control-label">{{$datos->nombre}}</label>
                 </div>
-
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <a href="#">Nombre : </a> {{$datos->nombre}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">Apellido Paterno : </a> {{$datos->paterno}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">Apellido Materno : </a> {{$datos->materno}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">E-mail : </a> {{$datos->correo}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">C.i. : </a> {{$datos->ci}}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">Celular : </a> {{$datos->celular}}
-                    </li>
-                </ul>
-
-            </section>
-        </aside>
-    </div>
     
-    <div class="col-lg-8">
+                <div class="mb-3 row">
+                    <label for="paterno" class="col-4 form-control-label">A. Paterno :</label>
+                    <label for="paterno" class="col-8 form-control-label">{{$datos->paterno}}</label>
+                </div>
+    
+                <div class="mb-3 row">
+                    <label for="materno" class="col-4 form-control-label">A. Materno :</label>
+                    <label for="materno" class="col-8 form-control-label">{{$datos->materno}}</label>
+                </div>
+    
+                <div class="mb-3 row">
+                    <label for="email" class="col-4 form-control-label">E-mail :</label>
+                    <label for="email" class="col-8 form-control-label">{{$datos->correo}}</label>
+                </div>
+    
+                <div class="mb-3 row">
+                    <label for="ci" class="col-4 form-control-label">C.i. :</label>
+                    <label for="ci" class="col-8 form-control-label">{{$datos->ci}}</label>
+                </div>
+    
+                <div class="mb-3 row">
+                    <label for="ci" class="col-4 form-control-label">Celular :</label>
+                    <label for="ci" class="col-8 form-control-label">{{$datos->celular}}</label>
+                </div>
+                <div class="mb-3 row">
+                    <hr>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-12">
+                        <a href="{{route('listaUsuario',$uri)}}" class="btn btn-warning botn-block"><i class="fa fa-sign-in"></i> Salir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <div class="col-8">
         <div class="card">
             <div class="card-header">
                 <h4>{{$titulo2}}</h4>
             </div>
-            <div class="card-body">
-                <div class="default-tab">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                             aria-selected="true">Datos</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
-                             aria-selected="false">Editar Datos</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact"
-                             aria-selected="false">Password</a>
+            <div calss="card-body">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#datos" type="button" role="tab" aria-controls="datos" aria-selected="true">Datos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#editar" type="button" role="tab" aria-controls="editar datos" aria-selected="false">Editar Datos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#password" type="button" role="tab" aria-controls="password" aria-selected="false">Password</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="datos" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="card card-body">
+                            <div class="mb-3 row">
+                                <label for="nombre" class="col-4 form-control-label">Nombre :</label>
+                                <label for="nombre" class="col-8 form-control-label">{{$datos->nombre}}</label>
+                            </div>
+                
+                            <div class="mb-3 row">
+                                <label for="paterno" class="col-4 form-control-label">A. Paterno :</label>
+                                <label for="paterno" class="col-8 form-control-label">{{$datos->paterno}}</label>
+                            </div>
+                
+                            <div class="mb-3 row">
+                                <label for="materno" class="col-4 form-control-label">A. Materno :</label>
+                                <label for="materno" class="col-8 form-control-label">{{$datos->materno}}</label>
+                            </div>
+                
+                            <div class="mb-3 row">
+                                <label for="email" class="col-4 form-control-label">E-mail :</label>
+                                <label for="email" class="col-8 form-control-label">{{$datos->correo}}</label>
+                            </div>
+                
+                            <div class="mb-3 row">
+                                <label for="ci" class="col-4 form-control-label">C.i. :</label>
+                                <label for="ci" class="col-8 form-control-label">{{$datos->ci}}</label>
+                            </div>
+                
+                            <div class="mb-3 row">
+                                <label for="celular" class="col-4 form-control-label">Celular :</label>
+                                <label for="celular" class="col-8 form-control-label">{{$datos->celular}}</label>
+                            </div>
                         </div>
-                    </nav>
-                    <div class="tab-content pl-3 pt-2" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href="#">Nombre : </a> {{$datos->nombre}}   
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">Apellido Paterno : </a> {{$datos->paterno}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">Apellido Materno : </a> {{$datos->materno}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">E-mail : </a> {{$datos->correo}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">C.i. : </a> {{$datos->ci}}
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">Celular : </a> {{$datos->celular}}
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    </div>
+                    <!--Tab Editar Datos-->
+                    <div class="tab-pane fade" id="editar" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card card-body">
                             <form action="{{route('updateperfil')}}" method="post" class="form-horizontal">
                                 @method('PUT')
                                 @csrf
+
                                 <input type="hidden" name="id" value="{{$datos->persona_id}}">
-                                <input type="hidden" name="id_usuario" value={{$datos->usuario_id}}>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="nombre" class=" form-control-label">Nombre</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="nombre" placeholder="Nombre" class="form-control" value="{{$datos->nombre}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="paterno" class=" form-control-label">A. Paterno</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="paterno" placeholder="Apellido Paterno" class="form-control" value="{{$datos->paterno}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="materno" class=" form-control-label">A. Materno</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="materno" placeholder="Apellido Materno" class="form-control" value="{{$datos->materno}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="ci" class=" form-control-label">C.I.</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="ci" placeholder="C.I." class="form-control" value="{{$datos->ci}}">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="celular" class=" form-control-label">Celular</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="celular" placeholder="Celular" class="form-control" value="{{$datos->celular}}">
+                                <input type="hidden" name="id_usuario" value="{{$datos->usuario_id}}"">
+
+                                <div class="mb-3 row">
+                                    <label for="nombre" class="col-4 form-control-label">Nombre : </label>
+                                    <div class="col-8">
+                                        <input type="text" name="nombre" placeholder="Nombre" class="form-control" value="{{$datos->nombre}}" required="true">
                                     </div>
                                 </div>
 
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="tipo" class=" form-control-label">Tipo</label>
+                                <div class="mb-3 row">
+                                    <label for="paterno" class="col-4 form-control-label">A. Paterno : </label>
+                                    <div class="col-8">
+                                        <input type="text" name="paterno" placeholder="Apellido Paterno" class="form-control" value="{{$datos->paterno}}">
                                     </div>
-                                    <div class="col-12 col-md-9">
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label for="materno" class="col-4 form-control-label">A. Materno : </label>
+                                    <div class="col-8">
+                                        <input type="text" name="materno" placeholder="Apellido Materno" class="form-control" value="{{$datos->materno}}">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label for="ci" class="col-4 form-control-label">C.I. : </label>
+                                    <div class="col-8">
+                                        <input type="text" name="ci" placeholder="C.I." class="form-control" value="{{$datos->ci}}">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label for="celular" class="col-4 form-control-label">Celular : </label>
+                                    <div class="col-8">
+                                        <input type="text" name="celular" placeholder="Celular" class="form-control" value="{{$datos->celular}}">
+                                    </div>
+                                </div>
+    
+                                <div class="mb-3 row">
+                                    <label for="tipo" class="col-4 form-control-label">Tipo : </label>
+                                    <div class="col-8">
                                         <select name="tipo" class="form-control" required>
                                             <option value="{{$datos->tipo}}">Seleccionar Tipo</option>
                                             <option value="1">Administrador</option>
@@ -154,48 +168,53 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="row form-group">
-                                    <div class="col col-md-6">
-                                        <button type="submit" class="btn btn-success btn-block">
-                                            <i class="fa fa-check"></i> Actualizar
+                                <div class="mb-3 row">
+                                    <hr>
+                                </div>
+    
+                                <div class="mb-3 row">
+                                    <div class="col-4"></div>    
+                                    <div class="col-4">
+                                        <button type="submit" class="btn btn-success botn-block">
+                                            <i class="fa fa-save"></i> Actualizar
                                         </button>
                                     </div>
-                                    <div class="col col-md-6">
-                                        
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <form action="{{route('updatepass')}}" method="post" class="form-horizontal">
-                                @method('PUT')
-                                @csrf
-                                <input type="hidden" name="id" value="{{$datos->usuario_id}}">
-                                <input type="hidden" name="id_usuario" value={{$datos->usuario_id}}>
-                                <div class="row form-group">
-                                    <div class="col col-md-4">
-                                        <label for="pass" class=" form-control-label">Password</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="password" name="pass" placeholder="Password" class="form-control">
-                                    </div>
-                                </div>
-                                
-                                <div class="row form-group">
-                                    <div class="col col-md-6">
-                                        <button type="submit" class="btn btn-success btn-block">
-                                            <i class="fa fa-check"></i> Actualizar
-                                        </button>
-                                    </div>
-                                    <div class="col col-md-6">
+                                    <div class="col-4">
                                         
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-
+                    <!-- tab para password-->
+                    <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="card card-body">
+                            <form action="{{route('updatepass')}}" method="post" class="form-horizontal">
+                                @method('PUT')
+                                @csrf
+                                <input type="hidden" name="id" value="{{$datos->usuario_id}}">
+                                <input type="hidden" name="id_usuario" value={{$datos->usuario_id}}>
+                                <div class="mb-3 row">
+                                    <label for="pass" class="col-4 form-control-label">Password</label>
+                                    <div class="col-8">
+                                        <input type="password" name="pass" placeholder="Password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <hr>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-4"></div>
+                                    <div class="col-4">
+                                        <button type="submit" class="btn btn-success botn-block">
+                                            <i class="fa fa-save"></i> Actualizar
+                                        </button>
+                                    </div>
+                                    <div class="col-4"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
