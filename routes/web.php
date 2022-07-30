@@ -135,6 +135,13 @@ Route::get('formularioConfirmarGet/{id_persona}/{id_estudiante}/{id_curso}/{prof
 Route::post('agregarEstudiante','ControllerFormulario@agregarEstudiante')->name('agregarEstudiante');
 Route::get('formularioResult/{id_curso}/{id_persona}/{id_estudiante}/{inscrito}/{id_inscrito}','ControllerFormulario@formularioResult')->name('formularioResult');
 
-
-#----------------------- Modulo Formulario
 Route::get('boletaInscrito/{id_curso}/{id_persona}/{id_estudiante}/{id_inscrito}','ControllerPdf@boletaInscrito')->name('boletaInscrito');
+
+
+#----------------------- Modulo Estudiante
+Route::get('listaEstudiante/{id_search}/{search}', 'ControllerEstudiante@listaEstudiante')->name('listaEstudiante');
+Route::get('formularioEstudiante','ControllerEstudiante@formularioEstudiante')->name('formularioEstudiante');
+Route::post('agregarEstudiante', 'ControllerEstudiante@agregarEstudiante')->name('agregarEstudiante');
+Route::get('editarEstudiante/{id_estudiante}','ControllerEstudiante@editarEstudiante')->name('editarEstudiante');
+Route::put('updateEstudiante', 'ControllerEstudiante@updateEstudiante')->name('updateEstudiante');
+Route::post('searchEstudiante', 'ControllerEstudiante@searchEstudiante')->name('searchEstudiante');
