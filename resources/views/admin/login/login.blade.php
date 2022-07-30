@@ -1,40 +1,45 @@
 @extends('admin.plantillas.secion')
 
 @section('label1')
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>SCD - ADMIN</h1>
+            </div>
+            <div class="card-body">
+                @if(session('mensaje_error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('mensaje_error')}}
+                    </div>
+                @endif
+                <form action="{{route('login')}}" method="post">
+                    @csrf
+                    <div class="mb-3 row">
+                        <label for="usuario" class="col-4 form-control-label">Usuario</label>
+                        <div class="col-8">
+                            <input class="form-control" type="email" name="correo" placeholder="Usuario">
+                        </div>
+                    </div>
 
-<div class="page-wrapper">
-    <div class="page-content--bge5">
-        <div class="container">
-            <div class="login-wrap">
-                <div class="login-content">
-                    <div class="login-logo">
-                        <a href="#">
-                            <h1>SCD - ADMIN</h1>
-                        </a>
-                        @if(session('mensaje_error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{session('mensaje_error')}}
-                            </div>
-                        @endif
+                    <div class="mb-3 row">
+                        <label for="password" class="col-4 form-control-label">Password</label>
+                        <div class="col-8">
+                            <input class="form-control" type="password" name="pass" placeholder="Password">
+                        </div>
                     </div>
-                    <div class="login-form">
-                        <form action="{{route('login')}}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label>Usuario</label>
-                                <input class="au-input au-input--full" type="email" name="correo" placeholder="Usuario">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="au-input au-input--full" type="password" name="pass" placeholder="Password">
-                            </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Ingresar</button>
-                        </form>
+                    <div class="mb-3 row">
+                        <hr>
                     </div>
-                </div>
+                    <div class="mb-3 row">
+                        <button class="btn btn-success botn-block" type="submit">Ingresar</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+    <div class="col-3"></div>
 </div>
-
 @endsection

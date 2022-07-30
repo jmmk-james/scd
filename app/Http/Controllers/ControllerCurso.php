@@ -22,7 +22,7 @@ class ControllerCurso extends Controller
                 $lista_curso=App\Curso::where('titulo','like','%'.$search.'%')->get();
             }
             else
-                $lista_curso=App\Curso::all();
+                $lista_curso=App\Curso::orderBy('id','desc')->get();
                             
             $id_search="1";
             $tipo="Buscar Curso";

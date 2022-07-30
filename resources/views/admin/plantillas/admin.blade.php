@@ -22,6 +22,7 @@
             <div class="row">
                 <div class="escritorio">
                 @yield('label1')
+                @yield('label2')
                 </div>
             </div>
         </div>
